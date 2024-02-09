@@ -1,0 +1,161 @@
+<h1 id="цель-выполнения-лабораторной-работы-1">Цель выполнения
+лабораторной работы №1</h1>
+<p>Подробное изучение идеологии и применение различных средств контроля
+версий, освоение практических навыков по работе с git.</p>
+<h1 id="ход-выполнения-лабораторной-работы-1">Ход выполнения
+лабораторной работы №1</h1>
+<h2 id="краткий-план-действий">Краткий план действий:</h2>
+<ol type="1">
+<li>Создание базовой конфигурацию для работы с git.</li>
+<li>Создать ключ SSH.</li>
+<li>Создать ключ PGP.</li>
+<li>Настроить подписи git.</li>
+<li>Создать локальный каталог для выполнения заданий по предмету.</li>
+</ol>
+<h2 id="подробная-реализация">Подробная реализация</h2>
+<ol type="1">
+<li>Открываем свою учётную запись на https://github.com: (рис. <span
+class="citation" data-cites="fig:001">[-@fig:001]</span>)</li>
+</ol>
+<figure id="fig:001">
+<img src="images/1.png" style="width:70.0%"
+alt="Учетная запись на github" />
+<figcaption aria-hidden="true">Учетная запись на github</figcaption>
+</figure>
+<ol start="2" type="1">
+<li>Задаём имя и email владельца репозитория данными командами git
+config –global user.name “Name Surname” и git config –global user.email
+“work@mail”, настраиваем utf-8 в выводе сообщений git командой git
+config –global core.quotepath false, а также задаём имя начальной ветки
+(будем называть её master): (рис. <span class="citation"
+data-cites="fig:002">[-@fig:002]</span>)</li>
+</ol>
+<figure>
+<img src="images/2.png"
+alt="Задание имени и email пользователя, настройка utf-8 в выводе сообщений, задание имени начальной ветки" />
+<figcaption aria-hidden="true">Задание имени и email пользователя,
+настройка utf-8 в выводе сообщений, задание имени начальной
+ветки</figcaption>
+</figure>
+<p>{#fig:002 width=70% }</p>
+<ol start="3" type="1">
+<li>Создаём ключей ssh по алгоритму rsa размером 4096 бит и по алгоритму
+ed25519: (рис. <span class="citation"
+data-cites="fig:003">[-@fig:003]</span>)</li>
+</ol>
+<figure>
+<img src="images/3.png"
+alt="Создание ключа ssh по алгоритму rsa с ключём размером 4096 бит" />
+<figcaption aria-hidden="true">Создание ключа ssh по алгоритму rsa с
+ключём размером 4096 бит</figcaption>
+</figure>
+<p>{#fig:003 width=70% }</p>
+<p>(рис. <span class="citation"
+data-cites="fig:004">[-@fig:004]</span>)</p>
+<figure>
+<img src="images/4.png" alt="Создание ключа ssh по алгоритму ed25519" />
+<figcaption aria-hidden="true">Создание ключа ssh по алгоритму
+ed25519</figcaption>
+</figure>
+<p>{#fig:004 width=70% }</p>
+<ol start="4" type="1">
+<li>Создаём ключ GPG, генерируя его и определяя различные
+характеристики: (рис. <span class="citation"
+data-cites="fig:005">[-@fig:005]</span>) <img src="images/5.png"
+alt="Создание ключа GPG" /></li>
+</ol>
+<p>{#fig:005 width=70% }</p>
+<ol start="5" type="1">
+<li>Добавляем GPG ключ в GitHub, выводя список ключей и копируя
+отпечаток приватного ключа: (рис.<span class="citation"
+data-cites="fig:006">[-@fig:006]</span>)</li>
+</ol>
+<figure>
+<img src="images/8.png" alt="Данные о ключе GPG" />
+<figcaption aria-hidden="true">Данные о ключе GPG</figcaption>
+</figure>
+<p>{#fig:006 width=70% }</p>
+<ol start="6" type="1">
+<li>Получаем содержимое ключа GPG и скопируем наш сгенерированный ключ в
+буфер обмена: (рис. <span class="citation"
+data-cites="fig:007">[-@fig:007]</span>) и (рис. <span class="citation"
+data-cites="fig:008">[-@fig:008]</span>)</li>
+</ol>
+<figure>
+<img src="images/9.png" alt="Данные о ключе GPG" />
+<figcaption aria-hidden="true">Данные о ключе GPG</figcaption>
+</figure>
+<p>{#fig:007 width=70% }</p>
+<figure>
+<img src="images/10.png" alt="Данные о ключе GPG" />
+<figcaption aria-hidden="true">Данные о ключе GPG</figcaption>
+</figure>
+<p>{#fig:008 width=70% }</p>
+<ol start="7" type="1">
+<li>Переходим в настройки GitHub, нажимаем на кнопку New GPG key и
+вставляем полученный ключ в поле ввода. Получаем: (рис. <span
+class="citation" data-cites="fig:009">[-@fig:009]</span>)</li>
+</ol>
+<figure>
+<img src="images/11.png" alt="Настройка подписей коммитов git" />
+<figcaption aria-hidden="true">Настройка подписей коммитов
+git</figcaption>
+</figure>
+<p>{#fig:009 width=70% }</p>
+<ol start="8" type="1">
+<li>Настраиваем gh и для начала авторизуемся в github. Далее создаём
+персональный токен, чтобы не нужно было входить в свою учётную запись
+через веб-сайт: (рис. <span class="citation"
+data-cites="fig:010">[-@fig:010]</span>) и (рис. <span class="citation"
+data-cites="fig:011">[-@fig:011]</span>)</li>
+</ol>
+<figure>
+<img src="images/12.png" alt="Вход в учётную запись github" />
+<figcaption aria-hidden="true">Вход в учётную запись github</figcaption>
+</figure>
+<p>{#fig:010 width=70% }</p>
+<figure>
+<img src="images/13.png" alt="Создание токена для авторизации" />
+<figcaption aria-hidden="true">Создание токена для
+авторизации</figcaption>
+</figure>
+<p>{#fig:011 width=70% }</p>
+<ol start="9" type="1">
+<li>После чего создаём репозиторий курса на основе шаблона следующим
+образом:(рис. <span class="citation"
+data-cites="fig:012">[-@fig:012]</span>) и (рис. <span class="citation"
+data-cites="fig:013">[-@fig:013]</span>)</li>
+</ol>
+<figure>
+<img src="images/15.png"
+alt="Создание репозитория курса на основе шаблона" />
+<figcaption aria-hidden="true">Создание репозитория курса на основе
+шаблона</figcaption>
+</figure>
+<p>{#fig:012 width=70% }</p>
+<figure>
+<img src="images/16.png"
+alt="Создание репозитория курса на основе шаблона" />
+<figcaption aria-hidden="true">Создание репозитория курса на основе
+шаблона</figcaption>
+</figure>
+<p>{#fig:013 width=70% }</p>
+<ol start="10" type="1">
+<li>Далее настраиваем каталога курса, то есть переходим в каталог курса
+командой cd ~/work/study/2023-2024/“Математическое
+моделирование”/mathmod и следующим образом удаляем лишние файлы, создаём
+необходимые каталоги и отправляем файлы на сервер: (рис. <span
+class="citation" data-cites="fig:014">[-@fig:014]</span>)</li>
+</ol>
+<figure>
+<img src="images/18.png" alt="Настройка каталога курса" />
+<figcaption aria-hidden="true">Настройка каталога курса</figcaption>
+</figure>
+<p>{#fig:014 width=70% }</p>
+<h1 id="итог-выполнения-лабораторной-работы-1">Итог выполнения
+лабораторной работы №1</h1>
+<p>В процессе выполнения данной лабораторной работы мы приобрели
+практические навыки применения средств контроля версий и вспомнили, как
+работать с git.</p>
+<h2 class="standout" id="section"></h2>
+<p><strong><em>Спасибо за внимание!</em></strong></p>
