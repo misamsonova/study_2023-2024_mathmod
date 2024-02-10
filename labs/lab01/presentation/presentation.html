@@ -1,161 +1,139 @@
-<h1 id="цель-выполнения-лабораторной-работы-1">Цель выполнения
-лабораторной работы №1</h1>
-<p>Подробное изучение идеологии и применение различных средств контроля
-версий, освоение практических навыков по работе с git.</p>
-<h1 id="ход-выполнения-лабораторной-работы-1">Ход выполнения
-лабораторной работы №1</h1>
-<h2 id="краткий-план-действий">Краткий план действий:</h2>
-<ol type="1">
-<li>Создание базовой конфигурацию для работы с git.</li>
+<!DOCTYPE html><html lang='ru'><head><style type='text/css'>html,body{padding:4px 8px 4px 8px;font-family:'sans-serif-regular';}h1,h2,h3,h4,h5,h6{font-family:'sans-serif-condensed';}a{color: #388E3C;text-decoration:underline;}img{height:auto;max-width:100%;max-height: 90vh;margin:auto;}html,body{color:#ffffff;background-color:#303030;}a:visited{color:#dddddd;}blockquote{color:#cccccc;}</style><style>video, img { max-width: 100%; } pre { max-width: 100%; overflow: auto; } table, th, td {  border: 1px solid white; border-collapse: collapse; border-spacing: 0; padding: 6px; } .floatl {float: left;} .clear {clear:both;} button:hover,button:active {filter: invert(1);} button { display: inline-block; box-sizing: border-box; border: none; border-radius: 4px; padding: 0 16px; min-width: 64px; height: 36px; font-family: 'Roboto'; font-size: 14px; font-weight: 500;  line-height: 36px; overflow: hidden; outline: none; vertical-align: middle; text-align: center; text-overflow: ellipsis; text-transform: uppercase; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); margin: 4px 4px 8px 0px;}    .emojibtn,.fa {font-size:250%; background: transparent; padding: 0px; min-width:0px;}    .sticky {position: sticky; display: inline-block; border: 0px solid white;} body{margin:0;padding:2.5vw} .header_no_underline { text-decoration: none; color: white; } h1 < a.header_no_underline { border-bottom: 2px solid #eaecef; }  h1,h2 { border-bottom: 2px solid #eaecef; } blockquote{padding:0px 14px;border-left:3.5px solid #dddddd;margin:4px 0}.video-container > p { margin: 0; }.task-list-item { list-style-type:none; text-indent: -1.4em; } li.task-list-item > pre, li.task-list-item > ul > li { text-indent: 0pt; }p > a { word-break:break-all; }span.delimiter::before { content: ', '; } .front-matter-container { margin-bottom: 1.5em; border-bottom: 2px solid black; } .front-matter-item { text-align: right; margin-bottom: 0.25em; } .front-matter-container-title { font-weight: bold; font-size: 110%; } .front-matter-container-tags { white-space: pre; overflow: scroll; font-size: 80%; } div.front-matter-item > .post-item-tags { padding: 0.1em 0.4em; border-radius: 50rem; background-color: #dee2e6; } div.front-matter-item > span.post-item-tags:not(:first-child) { margin-left: 0.25em; } div.front-matter-item > span.post-delimiter-tags::before { content: ' '; }.markor-table-of-contents { border: 1px solid white; border-radius: 2px; } .markor-table-of-contents > h1 { padding-left: 14px; margin-bottom: -8px; border-bottom: 1px solid white; } .markor-table-of-contents-list li { margin-left: -12px; } .markor-table-of-contents-list a { text-decoration: none; }</style><link rel='stylesheet' href='file:///android_asset/prism/themes/prism-tomorrow.min.css'/><script type='text/javascript' src='file:///android_asset/prism/prism.js'></script><script type='text/javascript' src='file:///android_asset/prism/plugins/autoloader/prism-autoloader.min.js'></script>
+<style> 
+html,body { 
+ /*font-family: sans-serif-condensed;*/ 
+ /*font-size: 80%;*/ 
+} 
+</style> 
+ 
+ 
+<script type="text/javascript"> 
+function onPageLoaded(){ 
+ 
+/*if ('format-markdown fileext-md' == 'MarkdownTextConverter') { 
+ window.scrollTo(0,document.body.scrollHeight); 
+}*/ 
+ 
+} 
+</script><script> function onPageLoaded_markor_private() {
+
+onPageLoaded(); }
+</script></head>
+<body class='format-markdown fileext-md' onload='onPageLoaded_markor_private();'>
+
+<!-- USER DOCUMENT CONTENT -->
+
+
+<div class='front-matter-container'><div class='front-matter-item front-matter-container-title'><span class='post-item-title'>Отчёт по лабораторной работе №1</span>
+</div>
+</div>
+<h1 id="цель-работы"><a href="#цель-работы" class="header_no_underline">Цель работы</a></h1>
+<p>Подробное изучение идеологии и применение различных средств контроля версий, освоение практических навыков по работе с git.</p>
+<h1 id="задание"><a href="#задание" class="header_no_underline">Задание</a></h1>
+<ul>
+<li>Создать базовую конфигурацию для работы с git.</li>
 <li>Создать ключ SSH.</li>
 <li>Создать ключ PGP.</li>
 <li>Настроить подписи git.</li>
+<li>Зарегистрироваться на Github.</li>
 <li>Создать локальный каталог для выполнения заданий по предмету.</li>
+</ul>
+<h1 id="теоретическое-введение"><a href="#теоретическое-введение" class="header_no_underline">Теоретическое введение</a></h1>
+<p>Системы контроля версий (Version Control System, VCS) применяются при работе нескольких человек над одним проектом. Обычно основное дерево проекта хранится в локальном
+или удалённом репозитории, к которому настроен доступ для участников проекта. При
+внесении изменений в содержание проекта система контроля версий позволяет их
+фиксировать, совмещать изменения, произведённые разными участниками проекта,
+производить откат к любой более ранней версии проекта, если это требуется.
+В классических системах контроля версий используется централизованная модель,
+предполагающая наличие единого репозитория для хранения файлов. Выполнение большинства функций по управлению версиями осуществляется специальным сервером.
+Участник проекта (пользователь) перед началом работы посредством определённых
+команд получает нужную ему версию файлов. После внесения изменений, пользователь
+размещает новую версию в хранилище. При этом предыдущие версии не удаляются
+из центрального хранилища и к ним можно вернуться в любой момент. Сервер может
+сохранять не полную версию изменённых файлов, а производить так называемую дельтакомпрессию — сохранять только изменения между последовательными версиями, что
+позволяет уменьшить объём хранимых данных.
+Системы контроля версий поддерживают возможность отслеживания и разрешения
+конфликтов, которые могут возникнуть при работе нескольких человек над одним
+файлом. Можно объединить (слить) изменения, сделанные разными участниками (автоматически или вручную), вручную выбрать нужную версию, отменить изменения вовсе
+или заблокировать файлы для изменения. В зависимости от настроек блокировка не
+позволяет другим пользователям получить рабочую копию или препятствует изменению
+рабочей копии файла средствами файловой системы ОС, обеспечивая таким образом,
+привилегированный доступ только одному пользователю, работающему с файлом.
+Системы контроля версий также могут обеспечивать дополнительные, более гибкие
+функциональные возможности. Например, они могут поддерживать работу с несколькими версиями одного файла, сохраняя общую историю изменений до точки ветвления
+версий и собственные истории изменений каждой ветви. Кроме того, обычно доступна
+информация о том, кто из участников, когда и какие изменения вносил. Обычно такого
+рода информация хранится в журнале изменений, доступ к которому можно ограничить.
+В отличие от классических, в распределённых системах контроля версий центральный
+репозиторий не является обязательным.
+Среди классических VCS наиболее известны CVS, Subversion, а среди распределённых — Git, Bazaar, Mercurial. Принципы их работы схожи, отличаются они в основном
+синтаксисом используемых в работе команд.</p>
+<h1 id="выполнение-лабораторной-работы"><a href="#выполнение-лабораторной-работы" class="header_no_underline">Выполнение лабораторной работы</a></h1>
+<ol>
+<li>Открываем свою учётную запись на <a href="https://github.com">https://github.com</a>: (рис. [-@fig:001])</li>
 </ol>
-<h2 id="подробная-реализация">Подробная реализация</h2>
-<ol type="1">
-<li>Открываем свою учётную запись на https://github.com: (рис. <span
-class="citation" data-cites="fig:001">[-@fig:001]</span>)</li>
+<p><img src="images/1.png" alt="Учетная запись на github" />{ #fig:001 width=70% }</p>
+<ol start="2">
+<li>Задаём имя и email владельца репозитория данными командами  git config &ndash;global user.name &ldquo;Name Surname&rdquo; и git config &ndash;global user.email &ldquo;work@mail&rdquo;, настраиваем utf-8 в выводе сообщений git командой git config &ndash;global core.quotepath false, а также задаём имя начальной ветки (будем называть её master):
+(рис. [-@fig:002])</li>
 </ol>
-<figure id="fig:001">
-<img src="images/1.png" style="width:70.0%"
-alt="Учетная запись на github" />
-<figcaption aria-hidden="true">Учетная запись на github</figcaption>
-</figure>
-<ol start="2" type="1">
-<li>Задаём имя и email владельца репозитория данными командами git
-config –global user.name “Name Surname” и git config –global user.email
-“work@mail”, настраиваем utf-8 в выводе сообщений git командой git
-config –global core.quotepath false, а также задаём имя начальной ветки
-(будем называть её master): (рис. <span class="citation"
-data-cites="fig:002">[-@fig:002]</span>)</li>
-</ol>
-<figure>
-<img src="images/2.png"
-alt="Задание имени и email пользователя, настройка utf-8 в выводе сообщений, задание имени начальной ветки" />
-<figcaption aria-hidden="true">Задание имени и email пользователя,
-настройка utf-8 в выводе сообщений, задание имени начальной
-ветки</figcaption>
-</figure>
+<p><img src="images/2.png" alt="Задание имени и email пользователя, настройка utf-8 в выводе сообщений, задание имени начальной ветки" /></p>
 <p>{#fig:002 width=70% }</p>
-<ol start="3" type="1">
-<li>Создаём ключей ssh по алгоритму rsa размером 4096 бит и по алгоритму
-ed25519: (рис. <span class="citation"
-data-cites="fig:003">[-@fig:003]</span>)</li>
+<ol start="3">
+<li>Создаём ключей ssh по алгоритму rsa размером 4096 бит и по алгоритму ed25519: (рис. [-@fig:003])</li>
 </ol>
-<figure>
-<img src="images/3.png"
-alt="Создание ключа ssh по алгоритму rsa с ключём размером 4096 бит" />
-<figcaption aria-hidden="true">Создание ключа ssh по алгоритму rsa с
-ключём размером 4096 бит</figcaption>
-</figure>
+<p><img src="images/3.png" alt="Создание ключа ssh по алгоритму rsa с ключём размером 4096 бит" /></p>
 <p>{#fig:003 width=70% }</p>
-<p>(рис. <span class="citation"
-data-cites="fig:004">[-@fig:004]</span>)</p>
-<figure>
-<img src="images/4.png" alt="Создание ключа ssh по алгоритму ed25519" />
-<figcaption aria-hidden="true">Создание ключа ssh по алгоритму
-ed25519</figcaption>
-</figure>
+<p>(рис. [-@fig:004])</p>
+<p><img src="images/4.png" alt="Создание ключа ssh по алгоритму ed25519" /></p>
 <p>{#fig:004 width=70% }</p>
-<ol start="4" type="1">
-<li>Создаём ключ GPG, генерируя его и определяя различные
-характеристики: (рис. <span class="citation"
-data-cites="fig:005">[-@fig:005]</span>) <img src="images/5.png"
-alt="Создание ключа GPG" /></li>
+<ol start="4">
+<li>Создаём ключ GPG, генерируя его и определяя различные характеристики: (рис. [-@fig:005])
+<img src="images/5.png" alt="Создание ключа GPG" /></li>
 </ol>
 <p>{#fig:005 width=70% }</p>
-<ol start="5" type="1">
-<li>Добавляем GPG ключ в GitHub, выводя список ключей и копируя
-отпечаток приватного ключа: (рис.<span class="citation"
-data-cites="fig:006">[-@fig:006]</span>)</li>
+<ol start="5">
+<li>Добавляем GPG ключ в GitHub, выводя список ключей и копируя отпечаток приватного ключа: (рис.[-@fig:006])</li>
 </ol>
-<figure>
-<img src="images/8.png" alt="Данные о ключе GPG" />
-<figcaption aria-hidden="true">Данные о ключе GPG</figcaption>
-</figure>
+<p><img src="images/8.png" alt="Данные о ключе GPG" /></p>
 <p>{#fig:006 width=70% }</p>
-<ol start="6" type="1">
-<li>Получаем содержимое ключа GPG и скопируем наш сгенерированный ключ в
-буфер обмена: (рис. <span class="citation"
-data-cites="fig:007">[-@fig:007]</span>) и (рис. <span class="citation"
-data-cites="fig:008">[-@fig:008]</span>)</li>
+<ol start="6">
+<li>Получаем содержимое ключа GPG и скопируем наш сгенерированный ключ в буфер обмена:
+(рис. [-@fig:007]) и (рис. [-@fig:008])</li>
 </ol>
-<figure>
-<img src="images/9.png" alt="Данные о ключе GPG" />
-<figcaption aria-hidden="true">Данные о ключе GPG</figcaption>
-</figure>
+<p><img src="images/9.png" alt="Данные о ключе GPG" /></p>
 <p>{#fig:007 width=70% }</p>
-<figure>
-<img src="images/10.png" alt="Данные о ключе GPG" />
-<figcaption aria-hidden="true">Данные о ключе GPG</figcaption>
-</figure>
+<p><img src="images/10.png" alt="Данные о ключе GPG" /></p>
 <p>{#fig:008 width=70% }</p>
-<ol start="7" type="1">
-<li>Переходим в настройки GitHub, нажимаем на кнопку New GPG key и
-вставляем полученный ключ в поле ввода. Получаем: (рис. <span
-class="citation" data-cites="fig:009">[-@fig:009]</span>)</li>
+<ol start="7">
+<li>Переходим в настройки GitHub, нажимаем на кнопку New GPG key и вставляем полученный ключ в поле ввода. Получаем:
+(рис. [-@fig:009])</li>
 </ol>
-<figure>
-<img src="images/11.png" alt="Настройка подписей коммитов git" />
-<figcaption aria-hidden="true">Настройка подписей коммитов
-git</figcaption>
-</figure>
+<p><img src="images/11.png" alt="Настройка подписей коммитов git" /></p>
 <p>{#fig:009 width=70% }</p>
-<ol start="8" type="1">
-<li>Настраиваем gh и для начала авторизуемся в github. Далее создаём
-персональный токен, чтобы не нужно было входить в свою учётную запись
-через веб-сайт: (рис. <span class="citation"
-data-cites="fig:010">[-@fig:010]</span>) и (рис. <span class="citation"
-data-cites="fig:011">[-@fig:011]</span>)</li>
+<ol start="8">
+<li>Настраиваем gh и для начала авторизуемся в github. Далее создаём персональный токен, чтобы не нужно было входить в свою учётную запись через веб-сайт: (рис. [-@fig:010]) и (рис. [-@fig:011])</li>
 </ol>
-<figure>
-<img src="images/12.png" alt="Вход в учётную запись github" />
-<figcaption aria-hidden="true">Вход в учётную запись github</figcaption>
-</figure>
+<p><img src="images/12.png" alt="Вход в учётную запись github" /></p>
 <p>{#fig:010 width=70% }</p>
-<figure>
-<img src="images/13.png" alt="Создание токена для авторизации" />
-<figcaption aria-hidden="true">Создание токена для
-авторизации</figcaption>
-</figure>
+<p><img src="images/13.png" alt="Создание токена для авторизации" /></p>
 <p>{#fig:011 width=70% }</p>
-<ol start="9" type="1">
-<li>После чего создаём репозиторий курса на основе шаблона следующим
-образом:(рис. <span class="citation"
-data-cites="fig:012">[-@fig:012]</span>) и (рис. <span class="citation"
-data-cites="fig:013">[-@fig:013]</span>)</li>
+<ol start="9">
+<li>После чего создаём репозиторий курса на основе шаблона следующим образом:(рис. [-@fig:012]) и (рис. [-@fig:013])</li>
 </ol>
-<figure>
-<img src="images/15.png"
-alt="Создание репозитория курса на основе шаблона" />
-<figcaption aria-hidden="true">Создание репозитория курса на основе
-шаблона</figcaption>
-</figure>
+<p><img src="images/15.png" alt="Создание репозитория курса на основе шаблона" /></p>
 <p>{#fig:012 width=70% }</p>
-<figure>
-<img src="images/16.png"
-alt="Создание репозитория курса на основе шаблона" />
-<figcaption aria-hidden="true">Создание репозитория курса на основе
-шаблона</figcaption>
-</figure>
+<p><img src="images/16.png" alt="Создание репозитория курса на основе шаблона" /></p>
 <p>{#fig:013 width=70% }</p>
-<ol start="10" type="1">
-<li>Далее настраиваем каталога курса, то есть переходим в каталог курса
-командой cd ~/work/study/2023-2024/“Математическое
-моделирование”/mathmod и следующим образом удаляем лишние файлы, создаём
-необходимые каталоги и отправляем файлы на сервер: (рис. <span
-class="citation" data-cites="fig:014">[-@fig:014]</span>)</li>
+<ol start="10">
+<li>Далее настраиваем каталога курса, то есть переходим в каталог курса командой  cd ~/work/study/2023-2024/&ldquo;Математическое моделирование&rdquo;/mathmod и следующим образом удаляем лишние файлы, создаём необходимые каталоги и отправляем файлы на сервер: (рис. [-@fig:014])</li>
 </ol>
-<figure>
-<img src="images/18.png" alt="Настройка каталога курса" />
-<figcaption aria-hidden="true">Настройка каталога курса</figcaption>
-</figure>
+<p><img src="images/18.png" alt="Настройка каталога курса" /></p>
 <p>{#fig:014 width=70% }</p>
-<h1 id="итог-выполнения-лабораторной-работы-1">Итог выполнения
-лабораторной работы №1</h1>
-<p>В процессе выполнения данной лабораторной работы мы приобрели
-практические навыки применения средств контроля версий и вспомнили, как
-работать с git.</p>
-<h2 class="standout" id="section"></h2>
-<p><strong><em>Спасибо за внимание!</em></strong></p>
+<h1 id="вывод"><a href="#вывод" class="header_no_underline">Вывод</a></h1>
+<p>В процессе выполнения данной лабораторной работы мы приобрели практические навыки применения средств контроля версий и вспомнили, как работать с git.</p>
+
+
+<!-- USER DOCUMENT CONTENT END -->
+
+</body></html>
