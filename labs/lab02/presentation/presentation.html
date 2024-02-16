@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Самсонова Мария" />
+  <title>Презентация по лабораторной работе №2</title>
+  <style>
+    html {
+      font-family: Arial;
+      font-size: 12pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Courier New;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Презентация по лабораторной работе №2</h1>
+<p class="subtitle">Задача о погоне</p>
+<p class="author">Самсонова Мария</p>
+<p class="date">16 февраля 2024</p>
+</header>
+<h1 id="цель-лабораторной-работы-2">Цель лабораторной работы №2</h1>
+<p>Изучение основ языков программирования Julia и OpenModelica и
+освоение библиотек данных языков, которые необходимы для построения
+графиков и решение дифференциальных уравнений.</p>
+<h1 id="задание">Задание</h1>
+<ol type="1">
+<li>Запишите уравнение, описывающее движение катера, с начальными
+условиями для двух случаев (в зависимости от расположения катера
+относительно лодки в начальный момент времени).</li>
+<li>Постройте траекторию движения катера и лодки для двух случаев.</li>
+<li>Найдите точку пересечения траектории катера и лодки.</li>
+</ol>
+<h1 id="вычисление-собственного-варианта">Вычисление собственного
+варианта</h1>
+<figure id="fig:001">
+<img src="images/27.png" style="width:70.0%" alt="Мой номер варианта" />
+<figcaption aria-hidden="true">Мой номер варианта</figcaption>
+</figure>
+<h1 id="решение-задачи">Решение задачи</h1>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20t%20%3D%20%7B%7Bx%20%7D%5Cover%7Bv%7D%7D"
+alt="t = {{x }\over{v}}" title="t = {{x }\over{v}}"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20t%20%3D%20%7B%7B11%2C7-x%7D%5Cover%7B3%2C7%20v%7D%7D"
+alt="t = {{11,7-x}\over{3,7 v}}" title="t = {{11,7-x}\over{3,7 v}}"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20t%20%3D%20%7B%7B11%2C7%2Bx%7D%5Cover%7B3%2C7%20v%7D%7D"
+alt="t = {{11,7+x}\over{3,7 v}}" title="t = {{11,7+x}\over{3,7 v}}"
+class="math display" /></p>
+<h1 id="решение-уравнений">Решение уравнений</h1>
+<p>Из этих уравнений получаем объедиение двух уравнений:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cleft%5B%20%5Cbegin%7Barray%7D%7Bcl%7D%0A%7B%7Bx%7D%5Cover%7Bv%7D%7D%20%3D%20%7B%7B11%2C7-x%7D%5Cover%7B3%2C7%20v%7D%7D%5C%5C%0A%7B%7Bx%7D%5Cover%7Bv%7D%7D%20%3D%20%7B%7B11%2C7%2Bx%7D%5Cover%7B3%2C7%20v%7D%7D%0A%5Cend%7Barray%7D%20%5Cright."
+alt="\left[ \begin{array}{cl}
+{{x}\over{v}} = {{11,7-x}\over{3,7 v}}\\
+{{x}\over{v}} = {{11,7+x}\over{3,7 v}}
+\end{array} \right." title="\left[ \begin{array}{cl}
+{{x}\over{v}} = {{11,7-x}\over{3,7 v}}\\
+{{x}\over{v}} = {{11,7+x}\over{3,7 v}}
+\end{array} \right." class="math display" /></p>
+<p>Решая данные уравнения, получаем два значения для x: <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_1%20%3D%20%7B%7B117%7D%5Cover%7B47%7D%7D"
+alt="x_1 = {{117}\over{47}}" title="x_1 = {{117}\over{47}}"
+class="math inline" />, <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_2%20%3D%20%7B%7B13%7D%5Cover%7B3%7D%7D"
+alt="x_2 = {{13}\over{3}}" title="x_2 = {{13}\over{3}}"
+class="math inline" /></p>
+<h1 id="решение-задачи-1">Решение задачи</h1>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20v_%5Ctau"
+alt="v_\tau" title="v_\tau" class="math display" /> – тангенциальная
+скорость <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20v" alt="v"
+title="v" class="math display" /> – радиальная скорость <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20v%20%3D%20%7Bdr%5Cover%20dt%7D"
+alt="v = {dr\over dt}" title="v = {dr\over dt}" class="math display" />
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20v_%5Ctau%20%3D%20%7B%7B%5Csqrt%7B%28%283%2C7%2Av%29%5E2-v%5E2%29%7D%7D%7D%20%3D%20%7B%5Csqrt%7B141%7D%2A3v%20%5Cover%7B5%7D%7D"
+alt="v_\tau = {{\sqrt{((3,7*v)^2-v^2)}}} = {\sqrt{141}*3v \over{5}}"
+title="v_\tau = {{\sqrt{((3,7*v)^2-v^2)}}} = {\sqrt{141}*3v \over{5}}"
+class="math display" /></p>
+<h1 id="решение-задачи-2">Решение задачи</h1>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Bcl%7D%0A%7Bdr%5Cover%20dt%7D%20%3D%20v%20%5C%5C%0Ar%7Bd%5Ctheta%5Cover%20dt%7D%20%3D%20%7B%7B%5Csqrt%7B141%7D%2A3v%7D%5Cover%7B10%7D%7D%0A%5Cend%7Barray%7D%20%5Cright."
+alt="\left\{ \begin{array}{cl}
+{dr\over dt} = v \\
+r{d\theta\over dt} = {{\sqrt{141}*3v}\over{10}}
+\end{array} \right." title="\left\{ \begin{array}{cl}
+{dr\over dt} = v \\
+r{d\theta\over dt} = {{\sqrt{141}*3v}\over{10}}
+\end{array} \right." class="math display" /></p>
+<h1 id="начальные-условия">Начальные условия</h1>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Bcl%7D%0A%5Ctheta_0%20%3D%200%20%5C%5C%0Ar_0%20%3D%20x_1%20%3D%20%7B%7B117%7D%5Cover%7B47%7D%7D%0A%5Cend%7Barray%7D%20%5Cright."
+alt="\left\{ \begin{array}{cl}
+\theta_0 = 0 \\
+r_0 = x_1 = {{117}\over{47}}
+\end{array} \right." title="\left\{ \begin{array}{cl}
+\theta_0 = 0 \\
+r_0 = x_1 = {{117}\over{47}}
+\end{array} \right." class="math display" /></p>
+<p><em>или</em></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Bcl%7D%0A%5Ctheta_0%20%3D%20-%5Cpi%20%5C%5C%0Ar_0%20%3D%20x_2%20%3D%20%7B%7B13%7D%5Cover%7B3%7D%7D%0A%5Cend%7Barray%7D%20%5Cright."
+alt="\left\{ \begin{array}{cl}
+\theta_0 = -\pi \\
+r_0 = x_2 = {{13}\over{3}}
+\end{array} \right." title="\left\{ \begin{array}{cl}
+\theta_0 = -\pi \\
+r_0 = x_2 = {{13}\over{3}}
+\end{array} \right." class="math display" /></p>
+<h1 id="итоговое-уравнение">Итоговое уравнение</h1>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%7Bdr%5Cover%20d%5Ctheta%7D%20%3D%20%7B%7B10r%5Cover%5Csqrt%7B141%7D%7D%5Cover%7B423%7D%7D"
+alt="{dr\over d\theta} = {{10r\over\sqrt{141}}\over{423}}"
+title="{dr\over d\theta} = {{10r\over\sqrt{141}}\over{423}}"
+class="math display" /></p>
+<h1 id="решение-задачи-с-помощью-julia.">Решение задачи с помощью
+Julia.</h1>
+<p>Используя библиотеку DifferentialEquations, мы в данной программе
+решаем дифференциальное уравнение, расписанное в постановке задачи
+лабораторной работы. Благодаря библиотеке Plots мы получаем Итоговые
+изображения в полярных координатах. [1]</p>
+<p>Установим Julia:</p>
+<figure id="fig:002">
+<img src="images/3.png" alt="“Установщик Julia.exe”" />
+<figcaption aria-hidden="true">“Установщик Julia.exe”</figcaption>
+</figure>
+<p>Установим нужные библиотеки, проверим их установку:</p>
+<figure id="fig:003">
+<img src="images/6.png" alt="“Проверка установки библиотек”" />
+<figcaption aria-hidden="true">“Проверка установки
+библиотек”</figcaption>
+</figure>
+<figure id="fig:004">
+<img src="images/7.png" alt="“Проверка установки библиотек”" />
+<figcaption aria-hidden="true">“Проверка установки
+библиотек”</figcaption>
+</figure>
+<p>Код программы:</p>
+<figure id="fig:005">
+<img src="images/9.jpg" alt="“Код программы. Часть 1”" />
+<figcaption aria-hidden="true">“Код программы. Часть 1”</figcaption>
+</figure>
+<figure id="fig:006">
+<img src="images/10.jpg" alt="“Код программы. Часть 2”" />
+<figcaption aria-hidden="true">“Код программы. Часть 2”</figcaption>
+</figure>
+<p>Скомпилируем файл командной в Командной строке:</p>
+<figure id="fig:007">
+<img src="images/8.jpg" alt="“Компляция программы lab02.jl”" />
+<figcaption aria-hidden="true">“Компляция программы
+lab02.jl”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia">Результаты работы кода на
+Julia</h1>
+<p>На рис. <span class="citation" data-cites="fig:008">@fig:008</span> и
+<span class="citation" data-cites="fig:009">@fig:009</span> изображены
+итоговые графики траектории движения катера и лодки для случая обоих
+случаев.</p>
+<figure id="fig:008">
+<img src="images/11.jpg" alt="“Полученные результаты. Первый случай”" />
+<figcaption aria-hidden="true">“Полученные результаты. Первый
+случай”</figcaption>
+</figure>
+<figure id="fig:009">
+<img src="images/12.jpg" alt="“Полученные результаты. Второй случай”" />
+<figcaption aria-hidden="true">“Полученные результаты. Второй
+случай”</figcaption>
+</figure>
+<h1 id="выводы">Выводы</h1>
+<p>В данной лабораторной работе №2 мы потроили графики для обоих
+случаев, где отрисованы траектории лодки и катера и наглядно показали
+пересечения. Таким образом, успешно решили поставленную задачу.</p>
+<p>Также изучили основы языков программирования Julia и освоили
+библиотеки данного языка, которые необходимы для построения графиков и
+решение дифференциальных уравнений. Однако из-за отсутствия возможности
+работы языка OpenModeica с полярными координатами мы не смогли
+приобрести опыт.</p>
+</body>
+</html>
