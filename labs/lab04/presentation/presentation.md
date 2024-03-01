@@ -1,13 +1,13 @@
 ---
 ## Front matter
 lang: ru-RU
-title: "Презентация по лабораторной работе №3"
-subtitle: " Модель боевых действий "
+title: "Презентация по лабораторной работе №4"
+subtitle: " Модель гармонических колебаний "
 author:
   - Самсонова Мария Ильинична
 institute:
   - Российский университет дружбы народов, Москва, Россия
-date: 23 февраля 2024
+date: 1 марта 2024
 
 ## i18n babel
 babel-lang: russian 
@@ -32,142 +32,284 @@ header-includes:
 
 
 
-# Цель работы
+# Цель лабораторной работы №4
 
-Изучение модели боевых действий Ланчестера и применение их на практике для решения поставленной задачи лабораторной работы №3.
+Изучение понятия гармонического осциллятора, построение фазового портрета и нахождение решения уравнения гармонического осциллятора.
 
-# Регулярная армия X против регулярной армии Y
+# Задание
 
-$$ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) $$
-$$ {dy\over {dt}} = -c(t)x(t)-h(t)y(t)+Q(t) $$
+Вариант 27:
 
-# Регулярная армия против партизанской армии
+Постройте фазовый портрет гармонического осциллятора и решение уравнения гармонического осциллятора для следующих случаев:
 
+1. Колебания гармонического осциллятора без затуханий и без действий внешней силы $\ddot{x}+9x=0$;
+2. Колебания гармонического осциллятора c затуханием и без действий внешней силы $\ddot{x}+5.5\dot{x}+4.4x=0$
+3. Колебания гармонического осциллятора c затуханием и под действием внешней силы $\ddot{x}+\dot{x}+6x=2cos(0.5t)$
 
-$$ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) $$
-$$ {dy\over {dt}} = -c(t)x(t)y(t)-h(t)y(t)+Q(t) $$
+На интервале $t\in [0;37]$ (шаг $0.05$) с начальными условиями $x_0=-0.7, y_0=0.7$.
+
   
-# Код программы Julia
+# Код программы Julia для первого случая:
 
 ```
-using Plots;
-using DifferentialEquations;
+#case 1
+# x'' + 9x = 0
+using DifferentialEquations
 
-function one(du, u, p, t)
-    du[1] = - 0.45*u[1] - 0.55*u[2] + sin(t+15) 
-    du[2] = - 0.58*u[1] - 0.45*u[2] + cos(t+3)
+function lorenz!(du, u, p, t)
+    a = p
+    du[1] = u[2]
+    du[2] = -a*u[1]
 end
 
-function two(du, u, p, t)
-    du[1] = - 0.38*u[1] - 0.67*u[2] + sin(7*t) + 1
-    du[2] = (- 0.57*u[1] - 0.39)*u[2] + cos(8*t) + 1
+const x = -0.7
+const y = 0.7
+u0 = [x, y]
+
+p = (9)
+tspan = (0.0, 37.0)
+prob = ODEProblem(lorenz!, u0, tspan, p)
+sol = solve(prob, dtmax = 0.05)
+
+using Plots; gr()
+
+#решение системы уравнений
+plt1 = plot(sol, dpi = 1200, legend= true, bg =:white)
+plot!(plt1, title="Решение системы уравнений - 1 случай",titlefont = font(9, "Arial"), legend=:outerbottom)
+savefig("lab4_julia_1.png")
+
+#фазовый портрет
+plt2 = plot(sol, vars=(2,1), dpi = 1200, legend= true, bg =:white)
+plot!(plt2, title="Фазовый портрет - 1 случай", titlefont = font(9, "Arial"), legend=:outerbottom)
+savefig("lab4_julia_1_phase.png")
+```
+
+# Код программы Julia для второго случая:
+
+```
+#case 2
+# x'' + 5.5x' + 4.4x = 0
+using DifferentialEquations
+
+function lorenz!(du, u, p, t)
+    a, b = p
+    du[1] = u[2]
+    du[2] = -a*du[1] - b*u[1] 
 end
 
-const people = Float64[88000, 99000]
-const prom1 = [0.0, 1.01]
-const prom2 = [0.0, 1.01]
+const x = -0.7
+const y = 0.7
+u0 = [x, y]
+
+p = (sqrt(5.5), 4.4)
+tspan = (0.0, 37.0)
+prob = ODEProblem(lorenz!, u0, tspan, p)
+sol = solve(prob, dtmax = 0.05)
+
+using Plots; gr()
+
+#решение системы уравнений
+plt1 = plot(sol, dpi = 1200, legend= true, bg =:white)
+plot!(plt1, title="Решение системы уравнений - 1 случай",titlefont = font(9, "Arial"), legend=:outerbottom)
+savefig("lab4_julia_2.png")
+
+#фазовый портрет
+plt2 = plot(sol, vars=(2,1), dpi = 1200, legend= true, bg =:white)
+plot!(plt2, title="Фазовый портрет - 1 случай", titlefont = font(9, "Arial"), legend=:outerbottom)
+savefig("lab4_julia_2_ph.png")
 ```
-# Код программы Julia
-
-```
-prob1 = ODEProblem(one, people, prom1)
-prob2 = ODEProblem(two, people, prom2)
-
-sol1 = solve(prob1, dtmax=0.1)
-sol2 = solve(prob2, dtmax=0.000001)
-
-A1 = [u[1] for u in sol1.u]
-A2 = [u[2] for u in sol1.u]
-T1 = [t for t in sol1.t]
-A3 = [u[1] for u in sol2.u]
-A4 = [u[2] for u in sol2.u]
-T2 = [t for t in sol2.t]
-```
-
-# Код программы Julia
-
-```
-plt1 = plot(dpi = 300, legend= true, bg =:white)
-plot!(plt1, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 1", legend=:outerbottom)
-plot!(plt1, T1, A1, label="Численность армии X", color =:red)
-plot!(plt1, T1, A2, label="Численность армии Y", color =:green)
-savefig(plt1, "lab03_1.png")
-```
-
-
-# Код программы Julia
+# Код программы Julia для третьего случая:
 
 ```
-plt2 = plot(dpi = 1200, legend= true, bg =:white)
-plot!(plt2, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 2", legend=:outerbottom)
-plot!(plt2, T2, A3, label="Численность армии X", color =:red)
-plot!(plt2, T2, A4, label="Численность армии Y", color =:green)
-savefig(plt2, "lab03_2.png")
+#case 3
+# x'' + x' + 6x = 2cos(0.5t)
+using DifferentialEquations
+
+function lorenz!(du, u, p, t)
+    a, b = p
+    du[1] = u[2]
+    du[2] = -a*du[1] - b*u[1] + 2*cos(0.5*t)
+end
+
+const x = -0.7
+const y = 0.7
+u0 = [x, y]
+
+p = (sqrt(1), 6)
+tspan = (0.0, 37.0)
+prob = ODEProblem(lorenz!, u0, tspan, p)
+sol = solve(prob, dtmax = 0.05)
+
+using Plots; gr()
+
+#решение системы уравнений
+plt1 = plot(sol, dpi = 1200, legend= true, bg =:white)
+plot!(plt1, title="Решение системы уравнений - 1 случай",titlefont = font(9, "Arial"), legend=:outerbottom)
+savefig("lab4_julia_3.png")
+
+#фазовый портрет
+plt2 = plot(sol, vars=(2,1), dpi = 1200, legend= true, bg =:white)
+plot!(plt2, title="Фазовый портрет - 1 случай", titlefont = font(9, "Arial"), legend=:outerbottom)
+savefig("lab4_julia_3_phase.png")
 ```
 
-# Результат работы с Julia. График для первого случая
+# Результаты работы кода на Julia (Первый случай)
 
-![ Модель боевых действий между регулярными войсками ](image/2.jpg){ #fig:001 width=70% }
+Колебания гармонического осциллятора без затуханий и без действий внешней силы
 
-# Результат работы с Julia. График для второго случая 
+!["Решение уравнения для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Julia"](image/1.png){#fig:001}
 
-![ Модель боевых действий между регулярной армией и партизанской армией ](image/3.jpg){ #fig:002 width=70% }
+# Результаты работы кода на Julia (Первый случай)
 
-# Код для первого случая в OpenModelica
 
-```
-model Lab3_1
-Real x;
-Real y;
-Real a = 0.45;
-Real b = 0.55;
-Real c = 0.58;
-Real d = 0.45;
-Real t = time;
-initial equation
-x = 88000;
-y = 99000;
-equation
-der(x) = -a*x - b*y + sin(t+15);
-der(y) = -c*x - d*y + cos(t+3);
-end Lab3_1;
-```
+!["Фазовый потрет для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Julia"](image/2.png){#fig:002}
 
-# Код для второго случая в OpenModelica
-```
-model Lab3_2
-Real x;
-Real y;
-Real a = 0.38;
-Real b = 0.67;
-Real c = 0.57;
-Real d = 0.39;
-Real t = time;
-initial equation
-x = 88000;
-y = 99000;
-equation
-der(x) = -a*x - b*y + sin(7*t)+1;
-der(y) = -c*x*y - d*y + cos(8*t)+1;
-end Lab3_2;
+# Результаты работы кода на Julia (Второй случай)
+
+Колебания гармонического осциллятора c затуханием и без действий внешней силы
+
+!["Решение уравнения для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Julia"](image/3.png){#fig:003}
+
+# Результаты работы кода на Julia (Второй случай)
+
+!["Фазовый потрет для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Julia"](image/4.png){#fig:004}
+
+# Результаты работы кода на Julia (Третий случай)
+
+Колебания гармонического осциллятора c затуханием и под действием внешней силы
+
+!["Решение уравнения для колебания гармонического осциллятора cc затуханием и под действием внешней силы на языке Julia"](image/5.png){#fig:005}
+
+# Результаты работы кода на Julia (Третий случай)
+
+!["Фазовый потрет для колебания гармонического осциллятора c затуханием и под действием внешней силы на языке Julia"](image/6.png){#fig:006}
+
+# Код программы OpenModelica для первого случая:
 
 ```
+//case1: x''+ 9x = 0
+model lab4_1 
+//x'' + g* x' + w^2* x = f(t) 
+//w - частота 
+//g - затухание 
+parameter Real w = sqrt(9);  
+parameter Real g =0;  
 
-# Результат работы  в OpenModelica для модели боевых действий между регулярными войсками
+parameter Real x0 = -0.7; 
+parameter Real y0 = 0.7; 
 
-!["Полученный график OpenModelica. Первый случай"](image/4.jpg){#fig:004}{ #fig:003 width=70% }
+Real x(start=x0); 
+Real y(start=y0); 
 
+// f(t) 
+function f 
+input Real t ; 
+output Real res; 
+algorithm  
+res := 0; 
+end f; 
 
-# Результат работы OpenModelica для модели боевых действий между регулярной армией и партизанской армией 
+equation 
+der(x) = y; 
+der(y) = -w*w*x - g*y + f(time); 
+end lab4_1;
+```
 
-!["Полученный график OpenModelica. Второй случай"](image/5.jpg){ #fig:005 width=70% }
+# Код программы OpenModelica для второго случая:
+
+```
+//case2: x'' + 5.5x' + 4.4x = 0
+model lab4_2
+
+parameter Real w = sqrt(4.4);  
+parameter Real g = 5.5;  
+
+parameter Real x0 = -0.7; 
+parameter Real y0 = 0.7; 
+
+Real x(start=x0); 
+Real y(start=y0); 
+
+// f(t) 
+function f 
+input Real t ; 
+output Real res; 
+algorithm  
+res := 0; 
+end f; 
+
+equation 
+der(x) = y; 
+der(y) = -w*w*x - g*y + f(time); 
+
+end lab4_2;
+```
+
+# Код программы OpenModelica для третьего случая:
+
+```
+//case3: x'' + x' + 6x = 2сos(0.5t)
+model lab4_3
+
+parameter Real w = sqrt(6.0);  
+parameter Real g = 1;  
+
+parameter Real x0 = -0.7; 
+parameter Real y0 = 0.7; 
+
+Real x(start=x0); 
+Real y(start=y0); 
+
+// f(t) 
+function f 
+input Real t ; 
+output Real res; 
+algorithm  
+res := 2*cos(0.5*t); // 3 случай 
+end f; 
+
+equation 
+der(x) = y; 
+der(y) = -w*w*x - g*y - f(time); 
+end lab4_3;
+
+```
+
+# Результаты работы кода на OpenModelica (Первый случай) 
+
+Колебания гармонического осциллятора без затуханий и без действий внешней силы:
+
+!["Решение уравнения для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Open Modelica"](image/7.png){#fig:007}
+
+# Результаты работы кода на OpenModelica (Первый случай) 
+
+!["Фазовый потрет для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Open Modelica"](image/8.png){#fig:008}
+
+# Результаты работы кода на OpenModelica (второй случай)
+
+Колебания гармонического осциллятора c затуханием и без действий внешней силы:
+
+!["Решение уравнения для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Open Modelica"](image/9.png){#fig:009}
+
+# Результаты работы кода на OpenModelica (второй случай)
+
+!["Фазовый потрет для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Open Modelica"](image/10.png){#fig:010}
+
+# Результаты работы кода на OpenModelica (третий случай)
+
+Колебания гармонического осциллятора c затуханием и под действием внешней силы:
+
+!["Решение уравнения для колебания гармонического осциллятора cc затуханием и под действием внешней силы на языке Open Modelica"](image/11.png){#fig:011}
+
+# Результаты работы кода на OpenModelica (третий случай)
+
+!["Фазовый потрет для колебания гармонического осциллятора c затуханием и под действием внешней силы на языке Open Modelica"](image/12.png){#fig:012}
+
 
 # Анализ полученных результатов. Сравнение языков.
 
-Исходя из данных графиков, для первой модели, то есть двух регулярных армий, противостоящих друг другу, графики на Julia и OpenModelica идентичны (с учётом использования разных графических ресурсов, разный масштаб и т.д.).
+В итоге проделанной лабораторной работе №4 мы построили по три модели (включающих в себя два графика) на языках Julia и OpenModelica. Построение моделей колебания на языке OpenModelica занимает меньше строк, чем аналогичное построение на Julia.
 
-Аналогичная ситуация верна и для графиков противостояния регулярной армии армии партизанов, которые рассматривались во второй модели.
+# Вывод
 
-# Вывод по лабораторной работе №3
-
-В ходе выполнения лабораторной работы №3 нам удалось построить две модели на языках Julia и OpenModelica. И мы можем сделать вывод, что язык OpenModelica более приспособлен для моделирования процессов, протекающих во времени, а также построение моделей действий на языке OpenModelica занимает горазде меньше времени и объема строк кода, чем на языке Julia.
+В ходе выполнения лабораторной работы №4 мы построили решения уравнения гармонического осциллятора и фазовые портреты гармонических колебаний без затухания, с затуханием и при действиях внешний силы на языках Julia и OpenModelica.

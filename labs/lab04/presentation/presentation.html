@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Самсонова Мария Ильинична" />
+  <title>Презентация по лабораторной работе №4</title>
+  <style>
+    html {
+      font-family: Arial;
+      font-size: 12pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Courier New;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Презентация по лабораторной работе №4</h1>
+<p class="subtitle">Модель гармонических колебаний</p>
+<p class="author">Самсонова Мария Ильинична</p>
+<p class="date">1 марта 2024</p>
+</header>
+<h1 id="цель-лабораторной-работы-4">Цель лабораторной работы №4</h1>
+<p>Изучение понятия гармонического осциллятора, построение фазового
+портрета и нахождение решения уравнения гармонического осциллятора.</p>
+<h1 id="задание">Задание</h1>
+<p>Вариант 27:</p>
+<p>Постройте фазовый портрет гармонического осциллятора и решение
+уравнения гармонического осциллятора для следующих случаев:</p>
+<ol type="1">
+<li>Колебания гармонического осциллятора без затуханий и без действий
+внешней силы <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cddot%7Bx%7D%2B9x%3D0"
+alt="\ddot{x}+9x=0" title="\ddot{x}+9x=0" class="math inline" />;</li>
+<li>Колебания гармонического осциллятора c затуханием и без действий
+внешней силы <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cddot%7Bx%7D%2B5.5%5Cdot%7Bx%7D%2B4.4x%3D0"
+alt="\ddot{x}+5.5\dot{x}+4.4x=0" title="\ddot{x}+5.5\dot{x}+4.4x=0"
+class="math inline" /></li>
+<li>Колебания гармонического осциллятора c затуханием и под действием
+внешней силы <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cddot%7Bx%7D%2B%5Cdot%7Bx%7D%2B6x%3D2cos%280.5t%29"
+alt="\ddot{x}+\dot{x}+6x=2cos(0.5t)"
+title="\ddot{x}+\dot{x}+6x=2cos(0.5t)" class="math inline" /></li>
+</ol>
+<p>На интервале <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t%5Cin%20%5B0%3B37%5D"
+alt="t\in [0;37]" title="t\in [0;37]" class="math inline" /> (шаг <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%200.05"
+alt="0.05" title="0.05" class="math inline" />) с начальными условиями
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_0%3D-0.7%2C%20y_0%3D0.7"
+alt="x_0=-0.7, y_0=0.7" title="x_0=-0.7, y_0=0.7"
+class="math inline" />.</p>
+<h1 id="код-программы-julia-для-первого-случая">Код программы Julia для
+первого случая:</h1>
+<pre><code>#case 1
+# x&#39;&#39; + 9x = 0
+using DifferentialEquations
+
+function lorenz!(du, u, p, t)
+    a = p
+    du[1] = u[2]
+    du[2] = -a*u[1]
+end
+
+const x = -0.7
+const y = 0.7
+u0 = [x, y]
+
+p = (9)
+tspan = (0.0, 37.0)
+prob = ODEProblem(lorenz!, u0, tspan, p)
+sol = solve(prob, dtmax = 0.05)
+
+using Plots; gr()
+
+#решение системы уравнений
+plt1 = plot(sol, dpi = 1200, legend= true, bg =:white)
+plot!(plt1, title=&quot;Решение системы уравнений - 1 случай&quot;,titlefont = font(9, &quot;Arial&quot;), legend=:outerbottom)
+savefig(&quot;lab4_julia_1.png&quot;)
+
+#фазовый портрет
+plt2 = plot(sol, vars=(2,1), dpi = 1200, legend= true, bg =:white)
+plot!(plt2, title=&quot;Фазовый портрет - 1 случай&quot;, titlefont = font(9, &quot;Arial&quot;), legend=:outerbottom)
+savefig(&quot;lab4_julia_1_phase.png&quot;)</code></pre>
+<h1 id="код-программы-julia-для-второго-случая">Код программы Julia для
+второго случая:</h1>
+<pre><code>#case 2
+# x&#39;&#39; + 5.5x&#39; + 4.4x = 0
+using DifferentialEquations
+
+function lorenz!(du, u, p, t)
+    a, b = p
+    du[1] = u[2]
+    du[2] = -a*du[1] - b*u[1] 
+end
+
+const x = -0.7
+const y = 0.7
+u0 = [x, y]
+
+p = (sqrt(5.5), 4.4)
+tspan = (0.0, 37.0)
+prob = ODEProblem(lorenz!, u0, tspan, p)
+sol = solve(prob, dtmax = 0.05)
+
+using Plots; gr()
+
+#решение системы уравнений
+plt1 = plot(sol, dpi = 1200, legend= true, bg =:white)
+plot!(plt1, title=&quot;Решение системы уравнений - 1 случай&quot;,titlefont = font(9, &quot;Arial&quot;), legend=:outerbottom)
+savefig(&quot;lab4_julia_2.png&quot;)
+
+#фазовый портрет
+plt2 = plot(sol, vars=(2,1), dpi = 1200, legend= true, bg =:white)
+plot!(plt2, title=&quot;Фазовый портрет - 1 случай&quot;, titlefont = font(9, &quot;Arial&quot;), legend=:outerbottom)
+savefig(&quot;lab4_julia_2_ph.png&quot;)</code></pre>
+<h1 id="код-программы-julia-для-третьего-случая">Код программы Julia для
+третьего случая:</h1>
+<pre><code>#case 3
+# x&#39;&#39; + x&#39; + 6x = 2cos(0.5t)
+using DifferentialEquations
+
+function lorenz!(du, u, p, t)
+    a, b = p
+    du[1] = u[2]
+    du[2] = -a*du[1] - b*u[1] + 2*cos(0.5*t)
+end
+
+const x = -0.7
+const y = 0.7
+u0 = [x, y]
+
+p = (sqrt(1), 6)
+tspan = (0.0, 37.0)
+prob = ODEProblem(lorenz!, u0, tspan, p)
+sol = solve(prob, dtmax = 0.05)
+
+using Plots; gr()
+
+#решение системы уравнений
+plt1 = plot(sol, dpi = 1200, legend= true, bg =:white)
+plot!(plt1, title=&quot;Решение системы уравнений - 1 случай&quot;,titlefont = font(9, &quot;Arial&quot;), legend=:outerbottom)
+savefig(&quot;lab4_julia_3.png&quot;)
+
+#фазовый портрет
+plt2 = plot(sol, vars=(2,1), dpi = 1200, legend= true, bg =:white)
+plot!(plt2, title=&quot;Фазовый портрет - 1 случай&quot;, titlefont = font(9, &quot;Arial&quot;), legend=:outerbottom)
+savefig(&quot;lab4_julia_3_phase.png&quot;)</code></pre>
+<h1 id="результаты-работы-кода-на-julia-первый-случай">Результаты работы
+кода на Julia (Первый случай)</h1>
+<p>Колебания гармонического осциллятора без затуханий и без действий
+внешней силы</p>
+<figure id="fig:001">
+<img src="image/1.png"
+alt="“Решение уравнения для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Julia”" />
+<figcaption aria-hidden="true">“Решение уравнения для колебания
+гармонического осциллятора без затуханий и без действий внешней силы на
+языке Julia”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-первый-случай-1">Результаты
+работы кода на Julia (Первый случай)</h1>
+<figure id="fig:002">
+<img src="image/2.png"
+alt="“Фазовый потрет для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Julia”" />
+<figcaption aria-hidden="true">“Фазовый потрет для колебания
+гармонического осциллятора без затуханий и без действий внешней силы на
+языке Julia”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-второй-случай">Результаты работы
+кода на Julia (Второй случай)</h1>
+<p>Колебания гармонического осциллятора c затуханием и без действий
+внешней силы</p>
+<figure id="fig:003">
+<img src="image/3.png"
+alt="“Решение уравнения для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Julia”" />
+<figcaption aria-hidden="true">“Решение уравнения для колебания
+гармонического осциллятора c затуханием и без действий внешней силы на
+языке Julia”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-второй-случай-1">Результаты
+работы кода на Julia (Второй случай)</h1>
+<figure id="fig:004">
+<img src="image/4.png"
+alt="“Фазовый потрет для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Julia”" />
+<figcaption aria-hidden="true">“Фазовый потрет для колебания
+гармонического осциллятора c затуханием и без действий внешней силы на
+языке Julia”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-третий-случай">Результаты работы
+кода на Julia (Третий случай)</h1>
+<p>Колебания гармонического осциллятора c затуханием и под действием
+внешней силы</p>
+<figure id="fig:005">
+<img src="image/5.png"
+alt="“Решение уравнения для колебания гармонического осциллятора cc затуханием и под действием внешней силы на языке Julia”" />
+<figcaption aria-hidden="true">“Решение уравнения для колебания
+гармонического осциллятора cc затуханием и под действием внешней силы на
+языке Julia”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-третий-случай-1">Результаты
+работы кода на Julia (Третий случай)</h1>
+<figure id="fig:006">
+<img src="image/6.png"
+alt="“Фазовый потрет для колебания гармонического осциллятора c затуханием и под действием внешней силы на языке Julia”" />
+<figcaption aria-hidden="true">“Фазовый потрет для колебания
+гармонического осциллятора c затуханием и под действием внешней силы на
+языке Julia”</figcaption>
+</figure>
+<h1 id="код-программы-openmodelica-для-первого-случая">Код программы
+OpenModelica для первого случая:</h1>
+<pre><code>//case1: x&#39;&#39;+ 9x = 0
+model lab4_1 
+//x&#39;&#39; + g* x&#39; + w^2* x = f(t) 
+//w - частота 
+//g - затухание 
+parameter Real w = sqrt(9);  
+parameter Real g =0;  
+
+parameter Real x0 = -0.7; 
+parameter Real y0 = 0.7; 
+
+Real x(start=x0); 
+Real y(start=y0); 
+
+// f(t) 
+function f 
+input Real t ; 
+output Real res; 
+algorithm  
+res := 0; 
+end f; 
+
+equation 
+der(x) = y; 
+der(y) = -w*w*x - g*y + f(time); 
+end lab4_1;</code></pre>
+<h1 id="код-программы-openmodelica-для-второго-случая">Код программы
+OpenModelica для второго случая:</h1>
+<pre><code>//case2: x&#39;&#39; + 5.5x&#39; + 4.4x = 0
+model lab4_2
+
+parameter Real w = sqrt(4.4);  
+parameter Real g = 5.5;  
+
+parameter Real x0 = -0.7; 
+parameter Real y0 = 0.7; 
+
+Real x(start=x0); 
+Real y(start=y0); 
+
+// f(t) 
+function f 
+input Real t ; 
+output Real res; 
+algorithm  
+res := 0; 
+end f; 
+
+equation 
+der(x) = y; 
+der(y) = -w*w*x - g*y + f(time); 
+
+end lab4_2;</code></pre>
+<h1 id="код-программы-openmodelica-для-третьего-случая">Код программы
+OpenModelica для третьего случая:</h1>
+<pre><code>//case3: x&#39;&#39; + x&#39; + 6x = 2сos(0.5t)
+model lab4_3
+
+parameter Real w = sqrt(6.0);  
+parameter Real g = 1;  
+
+parameter Real x0 = -0.7; 
+parameter Real y0 = 0.7; 
+
+Real x(start=x0); 
+Real y(start=y0); 
+
+// f(t) 
+function f 
+input Real t ; 
+output Real res; 
+algorithm  
+res := 2*cos(0.5*t); // 3 случай 
+end f; 
+
+equation 
+der(x) = y; 
+der(y) = -w*w*x - g*y - f(time); 
+end lab4_3;
+</code></pre>
+<h1 id="результаты-работы-кода-на-openmodelica-первый-случай">Результаты
+работы кода на OpenModelica (Первый случай)</h1>
+<p>Колебания гармонического осциллятора без затуханий и без действий
+внешней силы:</p>
+<figure id="fig:007">
+<img src="image/7.png"
+alt="“Решение уравнения для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Open Modelica”" />
+<figcaption aria-hidden="true">“Решение уравнения для колебания
+гармонического осциллятора без затуханий и без действий внешней силы на
+языке Open Modelica”</figcaption>
+</figure>
+<h1
+id="результаты-работы-кода-на-openmodelica-первый-случай-1">Результаты
+работы кода на OpenModelica (Первый случай)</h1>
+<figure id="fig:008">
+<img src="image/8.png"
+alt="“Фазовый потрет для колебания гармонического осциллятора без затуханий и без действий внешней силы на языке Open Modelica”" />
+<figcaption aria-hidden="true">“Фазовый потрет для колебания
+гармонического осциллятора без затуханий и без действий внешней силы на
+языке Open Modelica”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-openmodelica-второй-случай">Результаты
+работы кода на OpenModelica (второй случай)</h1>
+<p>Колебания гармонического осциллятора c затуханием и без действий
+внешней силы:</p>
+<figure id="fig:009">
+<img src="image/9.png"
+alt="“Решение уравнения для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Open Modelica”" />
+<figcaption aria-hidden="true">“Решение уравнения для колебания
+гармонического осциллятора c затуханием и без действий внешней силы на
+языке Open Modelica”</figcaption>
+</figure>
+<h1
+id="результаты-работы-кода-на-openmodelica-второй-случай-1">Результаты
+работы кода на OpenModelica (второй случай)</h1>
+<figure id="fig:010">
+<img src="image/10.png"
+alt="“Фазовый потрет для колебания гармонического осциллятора c затуханием и без действий внешней силы на языке Open Modelica”" />
+<figcaption aria-hidden="true">“Фазовый потрет для колебания
+гармонического осциллятора c затуханием и без действий внешней силы на
+языке Open Modelica”</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-openmodelica-третий-случай">Результаты
+работы кода на OpenModelica (третий случай)</h1>
+<p>Колебания гармонического осциллятора c затуханием и под действием
+внешней силы:</p>
+<figure id="fig:011">
+<img src="image/11.png"
+alt="“Решение уравнения для колебания гармонического осциллятора cc затуханием и под действием внешней силы на языке Open Modelica”" />
+<figcaption aria-hidden="true">“Решение уравнения для колебания
+гармонического осциллятора cc затуханием и под действием внешней силы на
+языке Open Modelica”</figcaption>
+</figure>
+<h1
+id="результаты-работы-кода-на-openmodelica-третий-случай-1">Результаты
+работы кода на OpenModelica (третий случай)</h1>
+<figure id="fig:012">
+<img src="image/12.png"
+alt="“Фазовый потрет для колебания гармонического осциллятора c затуханием и под действием внешней силы на языке Open Modelica”" />
+<figcaption aria-hidden="true">“Фазовый потрет для колебания
+гармонического осциллятора c затуханием и под действием внешней силы на
+языке Open Modelica”</figcaption>
+</figure>
+<h1 id="анализ-полученных-результатов.-сравнение-языков.">Анализ
+полученных результатов. Сравнение языков.</h1>
+<p>В итоге проделанной лабораторной работе №4 мы построили по три модели
+(включающих в себя два графика) на языках Julia и OpenModelica.
+Построение моделей колебания на языке OpenModelica занимает меньше
+строк, чем аналогичное построение на Julia.</p>
+<h1 id="вывод">Вывод</h1>
+<p>В ходе выполнения лабораторной работы №4 мы построили решения
+уравнения гармонического осциллятора и фазовые портреты гармонических
+колебаний без затухания, с затуханием и при действиях внешний силы на
+языках Julia и OpenModelica.</p>
+</body>
+</html>
