@@ -1,13 +1,13 @@
 ---
 ## Front matter
 lang: ru-RU
-title: "Презентация по лабораторной работе №3"
-subtitle: " Модель боевых действий "
+title: "Презентация по лабораторной работе №5"
+subtitle: " Модель хищник-жертва  "
 author:
   - Самсонова Мария Ильинична
 institute:
   - Российский университет дружбы народов, Москва, Россия
-date: 23 февраля 2024
+date: 03 марта 2024
 
 ## i18n babel
 babel-lang: russian 
@@ -30,144 +30,184 @@ header-includes:
  - '\makeatother'
 ---
 
+# Цель лабораторной работы №5
+
+Изучение жесткой модели хищник-жертва и построение данной моделию.
 
 
-# Цель работы
+# Задачи лабораторной работы №5
 
-Изучение модели боевых действий Ланчестера и применение их на практике для решения поставленной задачи лабораторной работы №3.
+1. Построить график зависимости численности хищников от численности жертв
+2. Построить график зависимости численности хищников и численности жертв от времени
+3. Найти стационарное состояние системы. 
 
-# Регулярная армия X против регулярной армии Y
+# Задание лабораторной работы №5
 
-$$ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) $$
-$$ {dy\over {dt}} = -c(t)x(t)-h(t)y(t)+Q(t) $$
+Вариант 27:
 
-# Регулярная армия против партизанской армии
+Для модели «хищник-жертва»:
+
+$$
+ \begin{cases}
+  \frac{dx}{dt} = -0.73x(t) + 0.037y(t)x(t)
+  \\   
+  \frac{dy}{dt} = 0.52y(t) - 0.039y(t)x(t)
+ \end{cases}
+$$
+
+Постройте график зависимости численности хищников от численности жертв, а также графики изменения численности хищников и численности жертв 
+при следующих начальных условиях: $x_0=7, y_0=16$
+Найдите стационарное состояние системы.
 
 
-$$ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) $$
-$$ {dy\over {dt}} = -c(t)x(t)y(t)-h(t)y(t)+Q(t) $$
   
-# Код программы Julia
+# Код программы Julia для нестационарного состояния:
 
 ```
-using Plots;
-using DifferentialEquations;
+using Plots
+using DifferentialEquations
 
-function one(du, u, p, t)
-    du[1] = - 0.45*u[1] - 0.55*u[2] + sin(t+15) 
-    du[2] = - 0.58*u[1] - 0.45*u[2] + cos(t+3)
+x0 = 7
+y0 = 16
+a = 0.73
+b = 0.037
+c = 0.52
+d = 0.039
+
+function ode_fn(du, u, p, t)
+    x, y = u
+    du[1] = -a*u[1] + b * u[1] * u[2]
+    du[2] = c * u[2] - d * u[1] * u[2]
 end
+```
+# Код программы Julia для нестационарного состояния:
 
-function two(du, u, p, t)
-    du[1] = - 0.38*u[1] - 0.67*u[2] + sin(7*t) + 1
-    du[2] = (- 0.57*u[1] - 0.39)*u[2] + cos(8*t) + 1
+```
+v0 = [x0, y0]
+tspan = (0.0, 60.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax=0.05)
+X = [u[1] for u in sol.u]
+Y = [u[2] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi=300,legend=false)
+plot!(plt,X,Y,color=:blue)
+savefig(plt, "lab05_1.png")
+
+plt2 = plot(dpi=300, legend=true)
+plot!(plt2, T, X, label="Численность жертв",color=:red)
+plot!(plt2, T, Y, label="Численность хищников", color=:green)
+savefig(plt2, "lab05_2.png")
+```
+
+# Код программы Julia для стационарного состояния:
+
+```
+using Plots
+using DifferentialEquations
+
+a = 0.73
+b = 0.037
+c = 0.52
+d = 0.039
+x0 = c / d 
+y0 = a / b 
+
+function ode_fn(du, u, p, t)
+    x, y = u
+    du[1] = -a*u[1] + b * u[1] * u[2]
+    du[2] = c * u[2] - d * u[1] * u[2]
 end
-
-const people = Float64[88000, 99000]
-const prom1 = [0.0, 1.01]
-const prom2 = [0.0, 1.01]
-```
-# Код программы Julia
-
-```
-prob1 = ODEProblem(one, people, prom1)
-prob2 = ODEProblem(two, people, prom2)
-
-sol1 = solve(prob1, dtmax=0.1)
-sol2 = solve(prob2, dtmax=0.000001)
-
-A1 = [u[1] for u in sol1.u]
-A2 = [u[2] for u in sol1.u]
-T1 = [t for t in sol1.t]
-A3 = [u[1] for u in sol2.u]
-A4 = [u[2] for u in sol2.u]
-T2 = [t for t in sol2.t]
-```
-
-# Код программы Julia
-
-```
-plt1 = plot(dpi = 300, legend= true, bg =:white)
-plot!(plt1, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 1", legend=:outerbottom)
-plot!(plt1, T1, A1, label="Численность армии X", color =:red)
-plot!(plt1, T1, A2, label="Численность армии Y", color =:green)
-savefig(plt1, "lab03_1.png")
 ```
 
 
-# Код программы Julia
+# Код программы Julia для стационарного состояния:
 
 ```
-plt2 = plot(dpi = 1200, legend= true, bg =:white)
-plot!(plt2, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 2", legend=:outerbottom)
-plot!(plt2, T2, A3, label="Численность армии X", color =:red)
-plot!(plt2, T2, A4, label="Численность армии Y", color =:green)
-savefig(plt2, "lab03_2.png")
+v0 = [x0, y0]
+tspan = (0.0, 60.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax=0.05)
+X = [u[1] for u in sol.u]
+Y = [u[2] for u in sol.u]
+T = [t for t in sol.t]
+
+plt2 = plot(
+  dpi=300,
+  legend=true)
+
+plot!(plt2,T,X,label="Численность жертв",color=:red)
+plot!(plt2,T,Y,label="Численность хищников",color=:green)
+savefig(plt2, "lab05_3.png")
 ```
 
-# Результат работы с Julia. График для первого случая
+# Результаты работы кода на Julia
 
-![ Модель боевых действий между регулярными войсками ](image/2.jpg){ #fig:001 width=70% }
+![График численности хищников от численности жертв](image/1.png){ #fig:001 width=70% height=70% }
 
-# Результат работы с Julia. График для второго случая 
+# Результаты работы кода на Julia
 
-![ Модель боевых действий между регулярной армией и партизанской армией ](image/3.jpg){ #fig:002 width=70% }
+![График численности жертв и хищников от времени](image/2.png){ #fig:002 width=70% height=70% }
 
-# Код для первого случая в OpenModelica
+# Результаты работы кода на Julia
+
+![Стационарное состояние](image/3.png){ #fig:003 width=70% height=70% }
+
+
+# Код в OpenModelica для нестационарного состояния:
 
 ```
-model Lab3_1
+model lab05_1
+Real a = 0.73;
+Real b = 0.037;
+Real c = 0.52;
+Real d = 0.039;
 Real x;
 Real y;
-Real a = 0.45;
-Real b = 0.55;
-Real c = 0.58;
-Real d = 0.45;
-Real t = time;
 initial equation
-x = 88000;
-y = 99000;
+x = 7;
+y = 16;
 equation
-der(x) = -a*x - b*y + sin(t+15);
-der(y) = -c*x - d*y + cos(t+3);
-end Lab3_1;
+der(x) = -a*x + b*x*y;
+der(y) = c*y - d*x*y;
+end lab05_1;
 ```
 
-# Код для второго случая в OpenModelica
+# Код в OpenModelica для стационарного состояния:
 ```
-model Lab3_2
+model lab05_2
+Real a = 0.73;
+Real b = 0.037;
+Real c = 0.52;
+Real d = 0.039;
 Real x;
 Real y;
-Real a = 0.38;
-Real b = 0.67;
-Real c = 0.57;
-Real d = 0.39;
-Real t = time;
 initial equation
-x = 88000;
-y = 99000;
+x = c / d;
+y = a / b;
 equation
-der(x) = -a*x - b*y + sin(7*t)+1;
-der(y) = -c*x*y - d*y + cos(8*t)+1;
-end Lab3_2;
-
+der(x) = -a*x + b*x*y;
+der(y) = c*y - d*x*y;
+end lab05_2;
 ```
 
-# Результат работы  в OpenModelica для модели боевых действий между регулярными войсками
+# Результаты работы кода на OpenModelica
 
-!["Полученный график OpenModelica. Первый случай"](image/4.jpg){#fig:004}{ #fig:003 width=70% }
+![График численности хищников от численности жертв](image/4.png){ #fig:004 width=70% height=70% }
 
+# Результаты работы кода на OpenModelica
 
-# Результат работы OpenModelica для модели боевых действий между регулярной армией и партизанской армией 
+![График численности жертв и хищников от времени](image/5.png){ #fig:005 width=70% height=70% }
 
-!["Полученный график OpenModelica. Второй случай"](image/5.jpg){ #fig:005 width=70% }
+# Результаты работы кода на OpenModelica
 
-# Анализ полученных результатов. Сравнение языков.
+![Стационарное состояние](image/6.png){ #fig:006 width=70% height=70% }
 
-Исходя из данных графиков, для первой модели, то есть двух регулярных армий, противостоящих друг другу, графики на Julia и OpenModelica идентичны (с учётом использования разных графических ресурсов, разный масштаб и т.д.).
+# Анализ полученных результатов. Сравнение Julia и OpenModelica
 
-Аналогичная ситуация верна и для графиков противостояния регулярной армии армии партизанов, которые рассматривались во второй модели.
+В итоге проделанной лабораторной работы №5 мы построили график зависимости численности хищников от численности жертв, а также графики изменения численности хищников и численности жертв на языках Julia и OpenModelia. Построение модели хищник-жертва на языке OpenModelica занимает меньше строк и времени для создания графиков, нежели на языке Julia.
 
-# Вывод по лабораторной работе №3
+# Вывод 
 
-В ходе выполнения лабораторной работы №3 нам удалось построить две модели на языках Julia и OpenModelica. И мы можем сделать вывод, что язык OpenModelica более приспособлен для моделирования процессов, протекающих во времени, а также построение моделей действий на языке OpenModelica занимает горазде меньше времени и объема строк кода, чем на языке Julia.
+В ходе выполнения лабораторной работы №5 была изучена модель хищник-жертва и построена модель на языках Julia и OpenModelica.

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Самсонова Мария Ильинична" />
+  <title>Презентация по лабораторной работе №5</title>
+  <style>
+    html {
+      font-family: Arial;
+      font-size: 12pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Courier New;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Презентация по лабораторной работе №5</h1>
+<p class="subtitle">Модель хищник-жертва</p>
+<p class="author">Самсонова Мария Ильинична</p>
+<p class="date">03 марта 2024</p>
+</header>
+<h1 id="цель-лабораторной-работы-5">Цель лабораторной работы №5</h1>
+<p>Изучение жесткой модели хищник-жертва и построение данной
+моделию.</p>
+<h1 id="задачи-лабораторной-работы-5">Задачи лабораторной работы №5</h1>
+<ol type="1">
+<li>Построить график зависимости численности хищников от численности
+жертв</li>
+<li>Построить график зависимости численности хищников и численности
+жертв от времени</li>
+<li>Найти стационарное состояние системы.</li>
+</ol>
+<h1 id="задание-лабораторной-работы-5">Задание лабораторной работы
+№5</h1>
+<p>Вариант 27:</p>
+<p>Для модели «хищник-жертва»:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cbegin%7Bcases%7D%0A%20%20%5Cfrac%7Bdx%7D%7Bdt%7D%20%3D%20-0.73x%28t%29%20%2B%200.037y%28t%29x%28t%29%0A%20%20%5C%5C%20%20%20%0A%20%20%5Cfrac%7Bdy%7D%7Bdt%7D%20%3D%200.52y%28t%29%20-%200.039y%28t%29x%28t%29%0A%20%5Cend%7Bcases%7D"
+alt="\begin{cases}
+  \frac{dx}{dt} = -0.73x(t) + 0.037y(t)x(t)
+  \\   
+  \frac{dy}{dt} = 0.52y(t) - 0.039y(t)x(t)
+ \end{cases}" title="\begin{cases}
+  \frac{dx}{dt} = -0.73x(t) + 0.037y(t)x(t)
+  \\   
+  \frac{dy}{dt} = 0.52y(t) - 0.039y(t)x(t)
+ \end{cases}" class="math display" /></p>
+<p>Постройте график зависимости численности хищников от численности
+жертв, а также графики изменения численности хищников и численности
+жертв при следующих начальных условиях: <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20x_0%3D7%2C%20y_0%3D16"
+alt="x_0=7, y_0=16" title="x_0=7, y_0=16" class="math inline" /> Найдите
+стационарное состояние системы.</p>
+<h1 id="код-программы-julia-для-нестационарного-состояния">Код программы
+Julia для нестационарного состояния:</h1>
+<pre><code>using Plots
+using DifferentialEquations
+
+x0 = 7
+y0 = 16
+a = 0.73
+b = 0.037
+c = 0.52
+d = 0.039
+
+function ode_fn(du, u, p, t)
+    x, y = u
+    du[1] = -a*u[1] + b * u[1] * u[2]
+    du[2] = c * u[2] - d * u[1] * u[2]
+end</code></pre>
+<h1 id="код-программы-julia-для-нестационарного-состояния-1">Код
+программы Julia для нестационарного состояния:</h1>
+<pre><code>v0 = [x0, y0]
+tspan = (0.0, 60.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax=0.05)
+X = [u[1] for u in sol.u]
+Y = [u[2] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi=300,legend=false)
+plot!(plt,X,Y,color=:blue)
+savefig(plt, &quot;lab05_1.png&quot;)
+
+plt2 = plot(dpi=300, legend=true)
+plot!(plt2, T, X, label=&quot;Численность жертв&quot;,color=:red)
+plot!(plt2, T, Y, label=&quot;Численность хищников&quot;, color=:green)
+savefig(plt2, &quot;lab05_2.png&quot;)</code></pre>
+<h1 id="код-программы-julia-для-стационарного-состояния">Код программы
+Julia для стационарного состояния:</h1>
+<pre><code>using Plots
+using DifferentialEquations
+
+a = 0.73
+b = 0.037
+c = 0.52
+d = 0.039
+x0 = c / d 
+y0 = a / b 
+
+function ode_fn(du, u, p, t)
+    x, y = u
+    du[1] = -a*u[1] + b * u[1] * u[2]
+    du[2] = c * u[2] - d * u[1] * u[2]
+end</code></pre>
+<h1 id="код-программы-julia-для-стационарного-состояния-1">Код программы
+Julia для стационарного состояния:</h1>
+<pre><code>v0 = [x0, y0]
+tspan = (0.0, 60.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax=0.05)
+X = [u[1] for u in sol.u]
+Y = [u[2] for u in sol.u]
+T = [t for t in sol.t]
+
+plt2 = plot(
+  dpi=300,
+  legend=true)
+
+plot!(plt2,T,X,label=&quot;Численность жертв&quot;,color=:red)
+plot!(plt2,T,Y,label=&quot;Численность хищников&quot;,color=:green)
+savefig(plt2, &quot;lab05_3.png&quot;)</code></pre>
+<h1 id="результаты-работы-кода-на-julia">Результаты работы кода на
+Julia</h1>
+<figure id="fig:001">
+<img src="image/1.png" style="width:70.0%;height:70.0%"
+alt="График численности хищников от численности жертв" />
+<figcaption aria-hidden="true">График численности хищников от
+численности жертв</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-1">Результаты работы кода на
+Julia</h1>
+<figure id="fig:002">
+<img src="image/2.png" style="width:70.0%;height:70.0%"
+alt="График численности жертв и хищников от времени" />
+<figcaption aria-hidden="true">График численности жертв и хищников от
+времени</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-2">Результаты работы кода на
+Julia</h1>
+<figure id="fig:003">
+<img src="image/3.png" style="width:70.0%;height:70.0%"
+alt="Стационарное состояние" />
+<figcaption aria-hidden="true">Стационарное состояние</figcaption>
+</figure>
+<h1 id="код-в-openmodelica-для-нестационарного-состояния">Код в
+OpenModelica для нестационарного состояния:</h1>
+<pre><code>model lab05_1
+Real a = 0.73;
+Real b = 0.037;
+Real c = 0.52;
+Real d = 0.039;
+Real x;
+Real y;
+initial equation
+x = 7;
+y = 16;
+equation
+der(x) = -a*x + b*x*y;
+der(y) = c*y - d*x*y;
+end lab05_1;</code></pre>
+<h1 id="код-в-openmodelica-для-стационарного-состояния">Код в
+OpenModelica для стационарного состояния:</h1>
+<pre><code>model lab05_2
+Real a = 0.73;
+Real b = 0.037;
+Real c = 0.52;
+Real d = 0.039;
+Real x;
+Real y;
+initial equation
+x = c / d;
+y = a / b;
+equation
+der(x) = -a*x + b*x*y;
+der(y) = c*y - d*x*y;
+end lab05_2;</code></pre>
+<h1 id="результаты-работы-кода-на-openmodelica">Результаты работы кода
+на OpenModelica</h1>
+<figure id="fig:004">
+<img src="image/4.png" style="width:70.0%;height:70.0%"
+alt="График численности хищников от численности жертв" />
+<figcaption aria-hidden="true">График численности хищников от
+численности жертв</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-openmodelica-1">Результаты работы кода
+на OpenModelica</h1>
+<figure id="fig:005">
+<img src="image/5.png" style="width:70.0%;height:70.0%"
+alt="График численности жертв и хищников от времени" />
+<figcaption aria-hidden="true">График численности жертв и хищников от
+времени</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-openmodelica-2">Результаты работы кода
+на OpenModelica</h1>
+<figure id="fig:006">
+<img src="image/6.png" style="width:70.0%;height:70.0%"
+alt="Стационарное состояние" />
+<figcaption aria-hidden="true">Стационарное состояние</figcaption>
+</figure>
+<h1
+id="анализ-полученных-результатов.-сравнение-julia-и-openmodelica">Анализ
+полученных результатов. Сравнение Julia и OpenModelica</h1>
+<p>В итоге проделанной лабораторной работы №5 мы построили график
+зависимости численности хищников от численности жертв, а также графики
+изменения численности хищников и численности жертв на языках Julia и
+OpenModelia. Построение модели хищник-жертва на языке OpenModelica
+занимает меньше строк и времени для создания графиков, нежели на языке
+Julia.</p>
+<h1 id="вывод">Вывод</h1>
+<p>В ходе выполнения лабораторной работы №5 была изучена модель
+хищник-жертва и построена модель на языках Julia и OpenModelica.</p>
+</body>
+</html>
