@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Самсонова Мария Ильинична" />
+  <title>Презентация по лабораторной работе №6</title>
+  <style>
+    html {
+      font-family: Arial;
+      font-size: 12pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Courier New;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Презентация по лабораторной работе №6</h1>
+<p class="subtitle">Задача об эпидемии</p>
+<p class="author">Самсонова Мария Ильинична</p>
+<p class="date">03 марта 2024</p>
+</header>
+<h1 id="цель-лабораторной-работы-6">Цель лабораторной работы №6</h1>
+<p>Изучение и построени модели эпидемии.</p>
+<h1 id="задание-лабораторной-работы-6">Задание лабораторной работы
+№6</h1>
+<p><strong>Вариант 27</strong></p>
+<p>На одном острове вспыхнула эпидемия. Известно, что из всех
+проживающих на острове <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28N%3D11300%29"
+alt="(N=11300)" title="(N=11300)" class="math inline" /> в момент начала
+эпидемии <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%28t%3D0%29"
+alt="(t=0)" title="(t=0)" class="math inline" /> число заболевших людей
+(являющихся распространителями инфекции) <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I%280%29%3D240"
+alt="I(0)=240" title="I(0)=240" class="math inline" />, А число здоровых
+людей с иммунитетом к болезни <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20R%280%29%3D46"
+alt="R(0)=46" title="R(0)=46" class="math inline" />. Таким образом,
+число людей восприимчивых к болезни, но пока здоровых, в начальный
+момент времени <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S%280%29%3DN-I%280%29-R%280%29"
+alt="S(0)=N-I(0)-R(0)" title="S(0)=N-I(0)-R(0)" class="math inline" />.
+Постройте графики изменения числа особей в каждой из трех групп.</p>
+<p>Рассмотрим, как будет протекать эпидемия в случае: 1. <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I%280%29%5Cleq%20I%5E%2A"
+alt="I(0)\leq I^*" title="I(0)\leq I^*" class="math inline" /> 2. <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I%280%29%3EI%5E%2A"
+alt="I(0)&gt;I^*" title="I(0)&gt;I^*" class="math inline" /></p>
+<h1 id="задачи-лабораторной-работы-6">Задачи лабораторной работы №6</h1>
+<p>Построить графики изменения числа особей в каждой из трех групп <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S" alt="S"
+title="S" class="math inline" />, <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I" alt="I"
+title="I" class="math inline" />, <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20R" alt="R"
+title="R" class="math inline" />. Рассмотреть, как будет протекать
+эпидемия в случаях:</p>
+<ol type="1">
+<li><p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I%280%29%5Cleq%20I%5E%2A"
+alt="I(0)\leq I^*" title="I(0)\leq I^*" class="math inline" /></p></li>
+<li><p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I%280%29%3EI%5E%2A"
+alt="I(0)&gt;I^*" title="I(0)&gt;I^*" class="math inline" /></p></li>
+</ol>
+<h1 id="код-программы-на-julia-для-первого-случая">Код программы на
+Julia для первого случая:</h1>
+<pre><code>using Plots
+using DifferentialEquations
+
+N = 11300
+I0 = 240 # заболевшие особи
+R0 = 46 # особи с иммунитетом
+S0 = N - I0 - R0 # здоровые, но восприимчивые особи
+alpha = 0.6 # коэффициент заболеваемости
+beta = 0.2 # коэффициент выздоровления
+
+#I0 &lt;= I*
+function ode_fn(du, u, p, t)
+    S, I, R = u
+    du[1] = 0
+    du[2] = -beta*u[2]
+    du[3] = beta*I
+end</code></pre>
+<h1 id="код-программы-на-julia-для-первого-случая-1">Код программы на
+Julia для первого случая:</h1>
+<pre><code>v0 = [S0, I0, R0]
+tspan = (0.0, 60.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax = 0.05)
+S = [u[1] for u in sol.u]
+I = [u[2] for u in sol.u]
+R = [u[3] for u in sol.u]
+T = [t for t in sol.t]
+plt = plot(
+  dpi = 600,
+  legend = :topright)
+plot!(plt,T,S,label = &quot;Восприимчивые особи&quot;,color = :blue)
+plot!(plt,T,I,label = &quot;Инфицированные особи&quot;,color = :green)
+plot!(plt,T,R,label = &quot;Особи с иммунитетом&quot;,color = :red)
+
+savefig(plt, &quot;lab06_1.png&quot;)</code></pre>
+<h1 id="код-программы-на-julia-для-второго-случая">Код программы на
+Julia для второго случая:</h1>
+<pre><code>using Plots
+using DifferentialEquations
+
+N = 11300
+I0 = 240 # заболевшие особи
+R0 = 46 # особи с иммунитетом
+S0 = N - I0 - R0 # здоровые, но восприимчивые особи
+alpha = 0.4 # коэффициент заболеваемости
+beta = 0.1 # коэффициент выздоровления
+
+#I0 &gt; I*
+function ode_fn(du, u, p, t)
+    S, I, R = u
+    du[1] = -alpha*u[1]
+    du[2] = alpha*u[1] - beta*u[2]
+    du[3] = beta*I
+end</code></pre>
+<h1 id="код-программы-на-julia-для-второго-случая-1">Код программы на
+Julia для второго случая:</h1>
+<pre><code>v0 = [S0, I0, R0]
+tspan = (0.0, 120.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax=0.05)
+S = [u[1] for u in sol.u]
+I = [u[2] for u in sol.u]
+R = [u[3] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(
+  dpi=600,
+  legend=:right)
+
+plot!(plt,T,S,label=&quot;Восприимчивые особи&quot;,color=:blue)
+plot!(plt,T,I,label=&quot;Инфицированные особи&quot;,color=:green)
+plot!(plt,T,R,label=&quot;Особи с иммунитетом&quot;,color=:red)
+savefig(plt, &quot;lab06_2.png&quot;)</code></pre>
+<h1
+id="результаты-работы-кода-на-julia-для-случая-когда-больные-изолированы">Результаты
+работы кода на Julia для случая, когда больные изолированы</h1>
+<figure id="fig:001">
+<img src="image/1.png" style="width:70.0%;height:70.0%"
+alt="Графики численности особей трех групп S, I, R, построенные на Julia, для случая, когда больные изолированы" />
+<figcaption aria-hidden="true">Графики численности особей трех групп S,
+I, R, построенные на Julia, для случая, когда больные
+изолированы</figcaption>
+</figure>
+<h1
+id="результаты-работы-кода-на-julia-для-случая-когда-больные-могут-заражать-особей-группы-s">Результаты
+работы кода на Julia для случая, когда больные могут заражать особей
+группы S</h1>
+<figure id="fig:002">
+<img src="image/2.png" style="width:70.0%;height:70.0%"
+alt="Графики численности особей трех групп S, I, R, построенные на Julia, для случая, когда больные могут заражать особей группы S" />
+<figcaption aria-hidden="true">Графики численности особей трех групп S,
+I, R, построенные на Julia, для случая, когда больные могут заражать
+особей группы S</figcaption>
+</figure>
+<h1 id="код-программы-на-openmodelica-для-первого-случая">Код программы
+на OpenModelica для первого случая:</h1>
+<p>Для случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I%280%29%20%5Cleq%20I%5E%2A"
+alt="I(0) \leq I^*" title="I(0) \leq I^*" class="math inline" />:</p>
+<pre><code>model lab06_1
+Real N = 11300;
+Real I;
+Real R;
+Real S;
+Real alpha = 0.6;
+Real beta = 0.2;
+initial equation
+I = 240;
+R = 46;
+S = N - I - R;
+equation
+der(S) = 0;
+der(I) = -beta*I;
+der(R) = beta*I;
+end lab06_1;</code></pre>
+<h1 id="код-программы-на-openmodelica-для-второго-случая">Код программы
+на OpenModelica для второго случая:</h1>
+<p>Для случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20I%280%29%3EI%5E%2A"
+alt="I(0)&gt;I^*" title="I(0)&gt;I^*" class="math inline" />:</p>
+<pre><code>model lab06_2
+Real N = 11300;
+Real I;
+Real R;
+Real S;
+Real alpha = 0.4;
+Real beta = 0.1;
+initial equation
+I = 240;
+R = 46;
+S = N - I - R;
+equation
+der(S) = -alpha*S;
+der(I) = alpha*S - beta*I;
+der(R) = beta*I;
+end lab06_2;</code></pre>
+<h1
+id="результаты-работы-кода-на-openmodelica-для-случая-когда-больные-изолированы">Результаты
+работы кода на OpenModelica для случая, когда больные изолированы</h1>
+<figure id="fig:003">
+<img src="image/3.png" style="width:70.0%;height:70.0%"
+alt="Графики численности особей трех групп S, I, R, построенные на Julia, для случая, когда больные изолированы" />
+<figcaption aria-hidden="true">Графики численности особей трех групп S,
+I, R, построенные на Julia, для случая, когда больные
+изолированы</figcaption>
+</figure>
+<h1
+id="результаты-работы-кода-на-openmodelica-для-случая-когда-больные-могут-заражать-особей-группы-s">Результаты
+работы кода на OpenModelica для случая, когда больные могут заражать
+особей группы S</h1>
+<figure id="fig:004">
+<img src="image/4.png" style="width:70.0%;height:70.0%"
+alt="Графики численности особей трех групп S, I, R, построенные на Julia, для случая, когда больные могут заражать особей группы S" />
+<figcaption aria-hidden="true">Графики численности особей трех групп S,
+I, R, построенные на Julia, для случая, когда больные могут заражать
+особей группы S</figcaption>
+</figure>
+<h1
+id="анализ-полученных-результатов.-сравнение-julia-и-openmodelica">Анализ
+полученных результатов. Сравнение Julia и OpenModelica</h1>
+<p>В итоге проделанной лабораторной работы мы построили графики
+зависимости численности особенный трех групп S,I,R для случаев, когда
+больные изолированы и когда они могут заражать особей группы S.</p>
+<p>Построение модели эпидемии на языке OpenModelica занимает меньше
+количество строк и времени, нежели аналогичное построение на Julia.</p>
+<h1 id="вывод-лабораторной-работы-6">Вывод лабораторной работы №6</h1>
+<p>В ходе выполнения лабораторной работы №6 была изучена модель эпидемии
+и построена модель на языках Julia и OpenModelica.</p>
+</body>
+</html>
