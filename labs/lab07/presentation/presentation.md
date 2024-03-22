@@ -1,13 +1,13 @@
 ---
 ## Front matter
 lang: ru-RU
-title: "Презентация по лабораторной работе №3"
-subtitle: " Модель боевых действий "
+title: "Презентация по лабораторной работе №7"
+subtitle: " Модель распространения рекламы "
 author:
   - Самсонова Мария Ильинична
 institute:
   - Российский университет дружбы народов, Москва, Россия
-date: 23 февраля 2024
+date: 04 марта 2024
 
 ## i18n babel
 babel-lang: russian 
@@ -30,144 +30,204 @@ header-includes:
  - '\makeatother'
 ---
 
+# Цель лабораторной работы №7
 
+Изучение и построение модели эффективности рекламы.
 
-# Цель работы
+# Задание лабораторной работы №7
 
-Изучение модели боевых действий Ланчестера и применение их на практике для решения поставленной задачи лабораторной работы №3.
+**Вариант 27**
 
-# Регулярная армия X против регулярной армии Y
+Постройте график распространения рекламы, математическая модель которой описывается следующим уравнением:
 
-$$ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) $$
-$$ {dy\over {dt}} = -c(t)x(t)-h(t)y(t)+Q(t) $$
+1.  $\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))$
+2.  $\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))$
+3.  $\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))$
 
-# Регулярная армия против партизанской армии
+При этом объем аудитории $N = 756$, в начальный момент о товаре знает 17 человек.
 
+Для случая 2 определите в какой момент времени скорость распространения рекламы будет иметь максимальное значение.
 
-$$ {dx\over {dt}} = -a(t)x(t)-b(t)y(t)+P(t) $$
-$$ {dy\over {dt}} = -c(t)x(t)y(t)-h(t)y(t)+Q(t) $$
-  
-# Код программы Julia
+# Выполнение лабораторной работы №7 на Julia
+
+Код программы для первого случая $\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))$:
 
 ```
-using Plots;
-using DifferentialEquations;
+using Plots
+using DifferentialEquations
 
-function one(du, u, p, t)
-    du[1] = - 0.45*u[1] - 0.55*u[2] + sin(t+15) 
-    du[2] = - 0.58*u[1] - 0.45*u[2] + cos(t+3)
+N = 756
+n0 = 17
+
+function ode_fn(du, u, p, t)
+    (n) = u
+    du[1] = (0.73 + 0.000013*u[1])*(N - u[1])
+end
+```
+
+# Выполнение лабораторной работы №7 на Julia
+
+```
+v0 = [n0]
+tspan = (0.0, 30.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax = 0.05)
+n = [u[1] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi = 600, title = "Эффективность распространения рекламы (1) ", legend = false)
+plot!(plt,T,n,color = :red)
+savefig(plt, "lab07_1.png")
+```
+
+# Выполнение лабораторной работы №7 на Julia
+
+Код программы для второго случая $\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))$:
+
+```
+using Plots
+using DifferentialEquations
+
+N = 756
+n0 = 17
+
+function ode_fn(du, u, p, t)
+    (n) = u
+    du[1] = (0.000013 + 0.73*u[1])*(N - u[1])
 end
 
-function two(du, u, p, t)
-    du[1] = - 0.38*u[1] - 0.67*u[2] + sin(7*t) + 1
-    du[2] = (- 0.57*u[1] - 0.39)*u[2] + cos(8*t) + 1
+v0 = [n0]
+tspan = (0.0, 0.1)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob)
+n = [u[1] for u in sol.u]
+T = [t for t in sol.t]
+```
+# Выполнение лабораторной работы №7 на Julia
+
+```
+max_dn = 0;
+max_dn_t = 0;
+max_dn_n = 0;
+for (i, t) in enumerate(T)
+    if sol(t, Val{1})[1] > max_dn
+        global max_dn = sol(t, Val{1})[1]
+        global max_dn_t = t
+        global max_dn_n = n[i]
+    end
 end
 
-const people = Float64[88000, 99000]
-const prom1 = [0.0, 1.01]
-const prom2 = [0.0, 1.01]
-```
-# Код программы Julia
-
-```
-prob1 = ODEProblem(one, people, prom1)
-prob2 = ODEProblem(two, people, prom2)
-
-sol1 = solve(prob1, dtmax=0.1)
-sol2 = solve(prob2, dtmax=0.000001)
-
-A1 = [u[1] for u in sol1.u]
-A2 = [u[2] for u in sol1.u]
-T1 = [t for t in sol1.t]
-A3 = [u[1] for u in sol2.u]
-A4 = [u[2] for u in sol2.u]
-T2 = [t for t in sol2.t]
+plt = plot(dpi = 600,title = "Эффективность распространения рекламы (2) ",legend = false)
+plot!(plt,T,n,color = :red)
+plot!(plt,[max_dn_t],[max_dn_n],seriestype = :scatter,color = :red)
+savefig(plt, "lab07_2.png")
 ```
 
-# Код программы Julia
+# Выполнение лабораторной работы №7 на Julia
+
+Код программы для третьего случая $\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))$:
 
 ```
-plt1 = plot(dpi = 300, legend= true, bg =:white)
-plot!(plt1, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 1", legend=:outerbottom)
-plot!(plt1, T1, A1, label="Численность армии X", color =:red)
-plot!(plt1, T1, A2, label="Численность армии Y", color =:green)
-savefig(plt1, "lab03_1.png")
+using Plots
+using DifferentialEquations
+
+N = 756
+n0 = 17
+
+function ode_fn(du, u, p, t)
+    (n) = u
+    du[1] = (0.55*sin(t) + 0.33*sin(5*t)*u[1])*(N - u[1])
+end
 ```
 
-
-# Код программы Julia
-
-```
-plt2 = plot(dpi = 1200, legend= true, bg =:white)
-plot!(plt2, xlabel="Время", ylabel="Численность", title="Модель боевых действий - случай 2", legend=:outerbottom)
-plot!(plt2, T2, A3, label="Численность армии X", color =:red)
-plot!(plt2, T2, A4, label="Численность армии Y", color =:green)
-savefig(plt2, "lab03_2.png")
-```
-
-# Результат работы с Julia. График для первого случая
-
-![ Модель боевых действий между регулярными войсками ](image/2.jpg){ #fig:001 width=70% }
-
-# Результат работы с Julia. График для второго случая 
-
-![ Модель боевых действий между регулярной армией и партизанской армией ](image/3.jpg){ #fig:002 width=70% }
-
-# Код для первого случая в OpenModelica
+# Выполнение лабораторной работы №7 на Julia
 
 ```
-model Lab3_1
-Real x;
-Real y;
-Real a = 0.45;
-Real b = 0.55;
-Real c = 0.58;
-Real d = 0.45;
-Real t = time;
+v0 = [n0]
+tspan = (0.0, 0.1)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax = 0.05)
+n = [u[1] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi = 600,title = "Эффективность распространения рекламы (3) ",legend = false)
+plot!(plt,T,n,color = :red)
+savefig(plt, "lab07_3.png")
+```
+
+# Результаты работы кода на Julia
+
+![График распространения рекламы для первого случая, построенный на языке Julia](image/1.PNG){ #fig:001 width=70% height=70% }
+
+# Результаты работы кода на Julia
+
+![График распространения рекламы для второго случая, построенный на языке Julia](image/2.PNG){ #fig:002 width=70% height=70% }
+
+# Результаты работы кода на Julia
+
+![График распространения рекламы для третьего случая, построенный на языке Julia](image/3.PNG){ #fig:003 width=70% height=70% }
+
+# Выполнение лабораторной работы №7 на OpenModelica
+
+Код программы для первого случая $\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))$:
+
+```
+model lab07_1
+Real N = 756;
+Real n;
 initial equation
-x = 88000;
-y = 99000;
+n = 17;
 equation
-der(x) = -a*x - b*y + sin(t+15);
-der(y) = -c*x - d*y + cos(t+3);
-end Lab3_1;
+der(n) = (0.73 + 0.000013*n)*(N-n);
+end lab07_1;
 ```
 
-# Код для второго случая в OpenModelica
+# Выполнение лабораторной работы №7 на OpenModelica
+
+Код программы для второго случая $\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))$:
+
 ```
-model Lab3_2
-Real x;
-Real y;
-Real a = 0.38;
-Real b = 0.67;
-Real c = 0.57;
-Real d = 0.39;
-Real t = time;
+model lab07_2
+Real N = 756;
+Real n;
 initial equation
-x = 88000;
-y = 99000;
+n = 17;
 equation
-der(x) = -a*x - b*y + sin(7*t)+1;
-der(y) = -c*x*y - d*y + cos(8*t)+1;
-end Lab3_2;
-
+der(n) = (0.000013 + 0.73*n)*(N-n);
+end lab07_2;
 ```
 
-# Результат работы  в OpenModelica для модели боевых действий между регулярными войсками
+# Выполнение лабораторной работы №7 на OpenModelica
 
-!["Полученный график OpenModelica. Первый случай"](image/4.jpg){#fig:004}{ #fig:003 width=70% }
+Код программы для третьего случая $\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))$:
 
+```
+model lab07_3
+Real N = 756;
+Real n;
+initial equation
+n = 17;
+equation
+der(n) = (0.55*sin(time) + 0.33*sin(5*time)*n)*(N-n);
+end lab07_3;
+```
 
-# Результат работы OpenModelica для модели боевых действий между регулярной армией и партизанской армией 
+# Результаты работы кода на OpenModelica
 
-!["Полученный график OpenModelica. Второй случай"](image/5.jpg){ #fig:005 width=70% }
+![График распространения рекламы для первого случая, построенный с помощью OpenModelica](image/4.PNG){ #fig:004 width=70% height=70% }
+
+# Результаты работы кода на OpenModelica
+
+![График распространения рекламы для второго случая, построенный с помощью OpenModelica](image/5.PNG){ #fig:005 width=70% height=70% }
+
+# Результаты работы кода на OpenModelica
+
+![График распространения рекламы для третьего случая, построенный с помощью OpenModelica](image/6.PNG){ #fig:006 width=70% height=70% }
 
 # Анализ полученных результатов. Сравнение языков.
 
-Исходя из данных графиков, для первой модели, то есть двух регулярных армий, противостоящих друг другу, графики на Julia и OpenModelica идентичны (с учётом использования разных графических ресурсов, разный масштаб и т.д.).
+В итоге проделанной работы мы построили графики распространения рекламы для трех случаев на языках Julia и OpenModelica. Построение модели распространения рекламы на языке OpenModelica занимает значительно меньше строк и построение графиков по времени, чем аналогичное построение на Julia. 
 
-Аналогичная ситуация верна и для графиков противостояния регулярной армии армии партизанов, которые рассматривались во второй модели.
+# Вывод лабораторной работы №7
 
-# Вывод по лабораторной работе №3
-
-В ходе выполнения лабораторной работы №3 нам удалось построить две модели на языках Julia и OpenModelica. И мы можем сделать вывод, что язык OpenModelica более приспособлен для моделирования процессов, протекающих во времени, а также построение моделей действий на языке OpenModelica занимает горазде меньше времени и объема строк кода, чем на языке Julia.
+В ходе выполнения лабораторной работы №7 была изучена модель эффективности рекламы и в дальнейшем построена модель на языках Julia и OpenModelica.

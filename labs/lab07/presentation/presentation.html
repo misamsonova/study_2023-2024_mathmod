@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Самсонова Мария Ильинична" />
+  <title>Презентация по лабораторной работе №7</title>
+  <style>
+    html {
+      font-family: Arial;
+      font-size: 12pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Courier New;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Презентация по лабораторной работе №7</h1>
+<p class="subtitle">Модель распространения рекламы</p>
+<p class="author">Самсонова Мария Ильинична</p>
+<p class="date">04 марта 2024</p>
+</header>
+<h1 id="цель-лабораторной-работы-7">Цель лабораторной работы №7</h1>
+<p>Изучение и построение модели эффективности рекламы.</p>
+<h1 id="задание-лабораторной-работы-7">Задание лабораторной работы
+№7</h1>
+<p><strong>Вариант 27</strong></p>
+<p>Постройте график распространения рекламы, математическая модель
+которой описывается следующим уравнением:</p>
+<ol type="1">
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.73%20%2B%200.000013n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))"
+class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.000013%20%2B%200.73n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))"
+class="math inline" /></li>
+<li><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.55%5Csin%7Bt%7D%20%2B%200.33%5Csin%7B%285t%29%7D%20%20n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))"
+class="math inline" /></li>
+</ol>
+<p>При этом объем аудитории <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N%20%3D%20756"
+alt="N = 756" title="N = 756" class="math inline" />, в начальный момент
+о товаре знает 17 человек.</p>
+<p>Для случая 2 определите в какой момент времени скорость
+распространения рекламы будет иметь максимальное значение.</p>
+<h1 id="выполнение-лабораторной-работы-7-на-julia">Выполнение
+лабораторной работы №7 на Julia</h1>
+<p>Код программы для первого случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.73%20%2B%200.000013n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))"
+class="math inline" />:</p>
+<pre><code>using Plots
+using DifferentialEquations
+
+N = 756
+n0 = 17
+
+function ode_fn(du, u, p, t)
+    (n) = u
+    du[1] = (0.73 + 0.000013*u[1])*(N - u[1])
+end</code></pre>
+<h1 id="выполнение-лабораторной-работы-7-на-julia-1">Выполнение
+лабораторной работы №7 на Julia</h1>
+<pre><code>v0 = [n0]
+tspan = (0.0, 30.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax = 0.05)
+n = [u[1] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi = 600, title = &quot;Эффективность распространения рекламы (1) &quot;, legend = false)
+plot!(plt,T,n,color = :red)
+savefig(plt, &quot;lab07_1.png&quot;)</code></pre>
+<h1 id="выполнение-лабораторной-работы-7-на-julia-2">Выполнение
+лабораторной работы №7 на Julia</h1>
+<p>Код программы для второго случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.000013%20%2B%200.73n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))"
+class="math inline" />:</p>
+<pre><code>using Plots
+using DifferentialEquations
+
+N = 756
+n0 = 17
+
+function ode_fn(du, u, p, t)
+    (n) = u
+    du[1] = (0.000013 + 0.73*u[1])*(N - u[1])
+end
+
+v0 = [n0]
+tspan = (0.0, 0.1)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob)
+n = [u[1] for u in sol.u]
+T = [t for t in sol.t]</code></pre>
+<h1 id="выполнение-лабораторной-работы-7-на-julia-3">Выполнение
+лабораторной работы №7 на Julia</h1>
+<pre><code>max_dn = 0;
+max_dn_t = 0;
+max_dn_n = 0;
+for (i, t) in enumerate(T)
+    if sol(t, Val{1})[1] &gt; max_dn
+        global max_dn = sol(t, Val{1})[1]
+        global max_dn_t = t
+        global max_dn_n = n[i]
+    end
+end
+
+plt = plot(dpi = 600,title = &quot;Эффективность распространения рекламы (2) &quot;,legend = false)
+plot!(plt,T,n,color = :red)
+plot!(plt,[max_dn_t],[max_dn_n],seriestype = :scatter,color = :red)
+savefig(plt, &quot;lab07_2.png&quot;)</code></pre>
+<h1 id="выполнение-лабораторной-работы-7-на-julia-4">Выполнение
+лабораторной работы №7 на Julia</h1>
+<p>Код программы для третьего случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.55%5Csin%7Bt%7D%20%2B%200.33%5Csin%7B%285t%29%7D%20%20n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))"
+class="math inline" />:</p>
+<pre><code>using Plots
+using DifferentialEquations
+
+N = 756
+n0 = 17
+
+function ode_fn(du, u, p, t)
+    (n) = u
+    du[1] = (0.55*sin(t) + 0.33*sin(5*t)*u[1])*(N - u[1])
+end</code></pre>
+<h1 id="выполнение-лабораторной-работы-7-на-julia-5">Выполнение
+лабораторной работы №7 на Julia</h1>
+<pre><code>v0 = [n0]
+tspan = (0.0, 0.1)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax = 0.05)
+n = [u[1] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi = 600,title = &quot;Эффективность распространения рекламы (3) &quot;,legend = false)
+plot!(plt,T,n,color = :red)
+savefig(plt, &quot;lab07_3.png&quot;)</code></pre>
+<h1 id="результаты-работы-кода-на-julia">Результаты работы кода на
+Julia</h1>
+<figure id="fig:001">
+<img src="image/1.PNG" style="width:70.0%;height:70.0%"
+alt="График распространения рекламы для первого случая, построенный на языке Julia" />
+<figcaption aria-hidden="true">График распространения рекламы для
+первого случая, построенный на языке Julia</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-1">Результаты работы кода на
+Julia</h1>
+<figure id="fig:002">
+<img src="image/2.PNG" style="width:70.0%;height:70.0%"
+alt="График распространения рекламы для второго случая, построенный на языке Julia" />
+<figcaption aria-hidden="true">График распространения рекламы для
+второго случая, построенный на языке Julia</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-julia-2">Результаты работы кода на
+Julia</h1>
+<figure id="fig:003">
+<img src="image/3.PNG" style="width:70.0%;height:70.0%"
+alt="График распространения рекламы для третьего случая, построенный на языке Julia" />
+<figcaption aria-hidden="true">График распространения рекламы для
+третьего случая, построенный на языке Julia</figcaption>
+</figure>
+<h1 id="выполнение-лабораторной-работы-7-на-openmodelica">Выполнение
+лабораторной работы №7 на OpenModelica</h1>
+<p>Код программы для первого случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.73%20%2B%200.000013n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.73 + 0.000013n(t))(N-n(t))"
+class="math inline" />:</p>
+<pre><code>model lab07_1
+Real N = 756;
+Real n;
+initial equation
+n = 17;
+equation
+der(n) = (0.73 + 0.000013*n)*(N-n);
+end lab07_1;</code></pre>
+<h1 id="выполнение-лабораторной-работы-7-на-openmodelica-1">Выполнение
+лабораторной работы №7 на OpenModelica</h1>
+<p>Код программы для второго случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.000013%20%2B%200.73n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.000013 + 0.73n(t))(N-n(t))"
+class="math inline" />:</p>
+<pre><code>model lab07_2
+Real N = 756;
+Real n;
+initial equation
+n = 17;
+equation
+der(n) = (0.000013 + 0.73*n)*(N-n);
+end lab07_2;</code></pre>
+<h1 id="выполнение-лабораторной-работы-7-на-openmodelica-2">Выполнение
+лабораторной работы №7 на OpenModelica</h1>
+<p>Код программы для третьего случая <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cfrac%7Bdn%7D%7Bdt%7D%20%3D%20%280.55%5Csin%7Bt%7D%20%2B%200.33%5Csin%7B%285t%29%7D%20%20n%28t%29%29%28N-n%28t%29%29"
+alt="\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))"
+title="\frac{dn}{dt} = (0.55\sin{t} + 0.33\sin{(5t)}  n(t))(N-n(t))"
+class="math inline" />:</p>
+<pre><code>model lab07_3
+Real N = 756;
+Real n;
+initial equation
+n = 17;
+equation
+der(n) = (0.55*sin(time) + 0.33*sin(5*time)*n)*(N-n);
+end lab07_3;</code></pre>
+<h1 id="результаты-работы-кода-на-openmodelica">Результаты работы кода
+на OpenModelica</h1>
+<figure id="fig:004">
+<img src="image/4.PNG" style="width:70.0%;height:70.0%"
+alt="График распространения рекламы для первого случая, построенный с помощью OpenModelica" />
+<figcaption aria-hidden="true">График распространения рекламы для
+первого случая, построенный с помощью OpenModelica</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-openmodelica-1">Результаты работы кода
+на OpenModelica</h1>
+<figure id="fig:005">
+<img src="image/5.PNG" style="width:70.0%;height:70.0%"
+alt="График распространения рекламы для второго случая, построенный с помощью OpenModelica" />
+<figcaption aria-hidden="true">График распространения рекламы для
+второго случая, построенный с помощью OpenModelica</figcaption>
+</figure>
+<h1 id="результаты-работы-кода-на-openmodelica-2">Результаты работы кода
+на OpenModelica</h1>
+<figure id="fig:006">
+<img src="image/6.PNG" style="width:70.0%;height:70.0%"
+alt="График распространения рекламы для третьего случая, построенный с помощью OpenModelica" />
+<figcaption aria-hidden="true">График распространения рекламы для
+третьего случая, построенный с помощью OpenModelica</figcaption>
+</figure>
+<h1 id="анализ-полученных-результатов.-сравнение-языков.">Анализ
+полученных результатов. Сравнение языков.</h1>
+<p>В итоге проделанной работы мы построили графики распространения
+рекламы для трех случаев на языках Julia и OpenModelica. Построение
+модели распространения рекламы на языке OpenModelica занимает
+значительно меньше строк и построение графиков по времени, чем
+аналогичное построение на Julia.</p>
+<h1 id="вывод-лабораторной-работы-7">Вывод лабораторной работы №7</h1>
+<p>В ходе выполнения лабораторной работы №7 была изучена модель
+эффективности рекламы и в дальнейшем построена модель на языках Julia и
+OpenModelica.</p>
+</body>
+</html>
