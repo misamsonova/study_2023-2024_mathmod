@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Самсонова Мария Ильинична" />
+  <title>Презентация по лабораторной работе №8</title>
+  <style>
+    html {
+      font-family: Arial;
+      font-size: 12pt;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Courier New;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Презентация по лабораторной работе №8</h1>
+<p class="subtitle">Модель конкуренции двух фирм.</p>
+<p class="author">Самсонова Мария Ильинична</p>
+<p class="date">04 марта 2024</p>
+</header>
+<h1 id="цель-лабораторной-работы-8">Цель лабораторной работы №8</h1>
+<p>Изучение и построение модели конкуренции двух фирм.</p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.">Теоретические
+сведения. Построение математической модели.</h1>
+<p>Для построения модели конкуренции хотя бы двух фирм необходимо
+рассмотреть модель одной фирмы. Вначале рассмотрим модель фирмы,
+производящей продукт долговременного пользования, когда цена его
+определяется балансом спроса и предложения. Примем, что этот продукт
+занимает определенную нишу рынка и конкуренты в ней отсутствуют.</p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.-1">Теоретические
+сведения. Построение математической модели.</h1>
+<p>Обозначим:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20N" alt="N"
+title="N" class="math inline" /> - число потребителей производимого
+продукта.</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S" alt="S"
+title="S" class="math inline" /> – доходы потребителей данного продукта.
+Считаем, что доходы всех потребителей одинаковы. Это предположение
+справедливо, если речь идет об одной рыночной нише, т.е. производимый
+продукт ориентирован на определенный слой населения.</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M" alt="M"
+title="M" class="math inline" /> – оборотные средства предприятия</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctau"
+alt="\tau" title="\tau" class="math inline" /> - длительность
+производственного цикла</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p" alt="p"
+title="p" class="math inline" /> - рыночная цена товара</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cwidetilde%7Bp%7D"
+alt="\widetilde{p}" title="\widetilde{p}" class="math inline" /> -
+себестоимость продукта, то есть переменные издержки на производство
+единицы продукции</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cdelta"
+alt="\delta" title="\delta" class="math inline" /> - доля оборотных
+средств, идущая на покрытие переменных издержек</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /> - постоянные издержки, которые не
+зависят от количества выпускаемой продукции</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28S%2Fp%29"
+alt="Q(S/p)" title="Q(S/p)" class="math inline" /> – функция спроса,
+зависящая от отношения дохода <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20S" alt="S"
+title="S" class="math inline" /> к цене <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p" alt="p"
+title="p" class="math inline" />. Она равна количеству продукта,
+потребляемого одним потребителем в единицу времени.</p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.-2">Теоретические
+сведения. Построение математической модели.</h1>
+<p>Функцию спроса товаров долговременного использования часто
+представляют в простейшей форме:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20Q%20%3D%20q%20-%20k%5Cfrac%7Bp%7D%7BS%7D%20%3D%20q%281%20-%20%5Cfrac%7Bp%7D%7Bp_%7Bcr%7D%7D%29"
+alt="Q = q - k\frac{p}{S} = q(1 - \frac{p}{p_{cr}})"
+title="Q = q - k\frac{p}{S} = q(1 - \frac{p}{p_{cr}})"
+class="math display" /></p>
+<p>где <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20q" alt="q"
+title="q" class="math inline" /> – максимальная потребность одного
+человека в продукте в единицу времени. Эта функция падает с ростом цены
+и при <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p%20%3D%20p_%7Bcr%7D"
+alt="p = p_{cr}" title="p = p_{cr}" class="math inline" /> (критическая
+стоимость продукта) потребители отказываются от приобретения товара.
+Величина <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p_%7Bcr%7D%20%3D%20Sq%2Fk"
+alt="p_{cr} = Sq/k" title="p_{cr} = Sq/k" class="math inline" />.
+Параметр <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20k" alt="k"
+title="k" class="math inline" /> – мера эластичности функции спроса по
+цене. Таким образом, функция спроса является пороговой (то есть, <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20Q%28S%2Fp%29%20%3D%200"
+alt="Q(S/p) = 0" title="Q(S/p) = 0" class="math inline" /> при <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p%20%5Cgeq%20p_%7Bcr%7D"
+alt="p \geq p_{cr}" title="p \geq p_{cr}" class="math inline" />) и
+обладает свойствами насыщения.</p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.-3">Теоретические
+сведения. Построение математической модели.</h1>
+<p>Уравнения динамики оборотных средств можно записать в виде:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cfrac%7BdM%7D%7Bdt%7D%20%3D%20-%5Cfrac%7BM%20%5Cdelta%7D%7B%5Ctau%7D%20%2B%20NQp%20-%20k%20%3D%20-%5Cfrac%7BM%5Cdelta%7D%7B%5Ctau%7D%20%2B%20Nq%281%20-%20%5Cfrac%7Bp%7D%7Bp_%7Bcr%7D%7D%29p%20-%20k"
+alt="\frac{dM}{dt} = -\frac{M \delta}{\tau} + NQp - k = -\frac{M\delta}{\tau} + Nq(1 - \frac{p}{p_{cr}})p - k"
+title="\frac{dM}{dt} = -\frac{M \delta}{\tau} + NQp - k = -\frac{M\delta}{\tau} + Nq(1 - \frac{p}{p_{cr}})p - k"
+class="math display" /></p>
+<p>Уравнение для рыночной цены <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p" alt="p"
+title="p" class="math inline" /> представим в виде:</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cfrac%7Bdp%7D%7Bdt%7D%20%3D%20%5Cgamma%20%28-%5Cfrac%7BM%5Cdelta%7D%7B%5Ctau%20%5Cwidetilde%7Bp%7D%7D%20%2B%20Nq%281-%5Cfrac%7Bp%7D%7Bp_%7Bcr%7D%7D%29%20%29"
+alt="\frac{dp}{dt} = \gamma (-\frac{M\delta}{\tau \widetilde{p}} + Nq(1-\frac{p}{p_{cr}}) )"
+title="\frac{dp}{dt} = \gamma (-\frac{M\delta}{\tau \widetilde{p}} + Nq(1-\frac{p}{p_{cr}}) )"
+class="math display" /></p>
+<p>Первый член соответствует количеству поставляемого на рынок товара
+(то есть, предложению), а второй член – спросу. Параметр <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cgamma"
+alt="\gamma" title="\gamma" class="math inline" /> зависит от скорости
+оборота товаров на рынке. Как правило, время торгового оборота
+существенно меньше времени производственного цикла <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctau"
+alt="\tau" title="\tau" class="math inline" />. При заданном M уравнение
+описывает быстрое стремление цены к равновесному значению цены, которое
+устойчиво.</p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.-4">Теоретические
+сведения. Построение математической модели.</h1>
+<p>В этом случае уравнение можно заменить алгебраическим
+соотношением</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20-%5Cfrac%7BM%5Cdelta%7D%7B%5Ctau%20%5Cwidetilde%7Bp%7D%7D%20%2B%20Nq%281-%5Cfrac%7Bp%7D%7Bp_%7Bcr%7D%7D%29%20%3D%200"
+alt="-\frac{M\delta}{\tau \widetilde{p}} + Nq(1-\frac{p}{p_{cr}}) = 0"
+title="-\frac{M\delta}{\tau \widetilde{p}} + Nq(1-\frac{p}{p_{cr}}) = 0"
+class="math display" /></p>
+<p>равновесное значение цены <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20p" alt="p"
+title="p" class="math inline" /> равно</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20p%20%3D%20p_%7Bcr%7D%281%20-%20%5Cfrac%7BM%5Cdelta%7D%7B%5Ctau%20%5Cwidetilde%7Bp%7D%20Nq%7D%29"
+alt="p = p_{cr}(1 - \frac{M\delta}{\tau \widetilde{p} Nq})"
+title="p = p_{cr}(1 - \frac{M\delta}{\tau \widetilde{p} Nq})"
+class="math display" /></p>
+<p>Тогда уравнения динамики оборотных средств приобретает вид</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cfrac%7BdM%7D%7Bdt%7D%20%3D%20-%5Cfrac%7BM%20%5Cdelta%7D%7B%5Ctau%7D%28%5Cfrac%7Bp%7D%7Bp_%7Bcr%7D%7D-1%29%20-%20M%5E2%20%28%20%5Cfrac%7B%5Cdelta%7D%7B%5Ctau%20%5Cwidetilde%7Bp%7D%20%7D%29%5E2%20%5Cfrac%7Bp_%7Bcr%7D%7D%7BNq%7D%20-%20k"
+alt="\frac{dM}{dt} = -\frac{M \delta}{\tau}(\frac{p}{p_{cr}}-1) - M^2 ( \frac{\delta}{\tau \widetilde{p} })^2 \frac{p_{cr}}{Nq} - k"
+title="\frac{dM}{dt} = -\frac{M \delta}{\tau}(\frac{p}{p_{cr}}-1) - M^2 ( \frac{\delta}{\tau \widetilde{p} })^2 \frac{p_{cr}}{Nq} - k"
+class="math display" /></p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.-5">Теоретические
+сведения. Построение математической модели.</h1>
+<p>Это уравнение имеет два стационарных решения, соответствующих условию
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20dM%2Fdt%3D0"
+alt="dM/dt=0" title="dM/dt=0" class="math inline" /></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cwidetilde%7BM_%7B1%2C2%7D%7D%20%3D%20%5Cfrac%7B1%7D%7B2%7D%20a%20%5Cpm%20%5Csqrt%7B%5Cfrac%7Ba%5E2%7D%7B4%7D%20-%20b%7D"
+alt="\widetilde{M_{1,2}} = \frac{1}{2} a \pm \sqrt{\frac{a^2}{4} - b}"
+title="\widetilde{M_{1,2}} = \frac{1}{2} a \pm \sqrt{\frac{a^2}{4} - b}"
+class="math display" /></p>
+<p>где</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%20%3D%20Nq%281%20-%20%5Cfrac%7B%5Cwidetilde%7Bp%7D%7D%7Bp_%7Bcr%7D%7D%20%5Cwidetilde%7Bp%7D%20%5Cfrac%7B%5Ctau%7D%7B%5Cdelta%7D%29%2C%20b%20%3D%20kNq%20%5Cfrac%7B%28%5Ctau%20%5Cwidetilde%7Bp%7D%29%5E2%7D%7Bp_%7Bcr%7D%5Cdelta%20%5E2%7D"
+alt="a = Nq(1 - \frac{\widetilde{p}}{p_{cr}} \widetilde{p} \frac{\tau}{\delta}), b = kNq \frac{(\tau \widetilde{p})^2}{p_{cr}\delta ^2}"
+title="a = Nq(1 - \frac{\widetilde{p}}{p_{cr}} \widetilde{p} \frac{\tau}{\delta}), b = kNq \frac{(\tau \widetilde{p})^2}{p_{cr}\delta ^2}"
+class="math display" /></p>
+<p>Получается, что при больших постоянных издержках (в случае <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20a%5E2%20%3C%204b"
+alt="a^2 &lt; 4b" title="a^2 &lt; 4b" class="math inline" />)
+стационарных состояний нет. Это означает, что в этих условиях фирма не
+может функционировать стабильно, то есть, терпит банкротство. Однако,
+как правило, постоянные затраты малы по сравнению с переменными (то
+есть, <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b%20%3C%3C%20a%5E2"
+alt="b &lt;&lt; a^2" title="b &lt;&lt; a^2" class="math inline" />) и
+играют роль, только в случае, когда оборотные средства малы.</p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.-6">Теоретические
+сведения. Построение математической модели.</h1>
+<p>При <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20b%20%3C%3C%20a"
+alt="b &lt;&lt; a" title="b &lt;&lt; a" class="math inline" />
+стационарные значения <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M" alt="M"
+title="M" class="math inline" /> равны</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cwidetilde%7BM_%7B%2B%7D%7D%20%3D%20Nq%20%5Cfrac%7B%5Ctau%7D%7B%5Cdelta%7D%281%20-%20%5Cfrac%7B%5Cwidetilde%7Bp%7D%7D%7Bp_%7Bcr%7D%7D%29%5Cwidetilde%7Bp%7D%2C%20%5Cwidetilde%7BM_%7B-%7D%7D%20%3D%20k%5Cwidetilde%7Bp%7D%20%5Cfrac%7B%5Ctau%7D%7B%5Cdelta%28p_%7Bcr%7D%20-%20%5Cwidetilde%7Bp%7D%29%7D"
+alt="\widetilde{M_{+}} = Nq \frac{\tau}{\delta}(1 - \frac{\widetilde{p}}{p_{cr}})\widetilde{p}, \widetilde{M_{-}} = k\widetilde{p} \frac{\tau}{\delta(p_{cr} - \widetilde{p})}"
+title="\widetilde{M_{+}} = Nq \frac{\tau}{\delta}(1 - \frac{\widetilde{p}}{p_{cr}})\widetilde{p}, \widetilde{M_{-}} = k\widetilde{p} \frac{\tau}{\delta(p_{cr} - \widetilde{p})}"
+class="math display" /></p>
+<p>Первое состояние <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cwidetilde%7BM_%7B%2B%7D%7D"
+alt="\widetilde{M_{+}}" title="\widetilde{M_{+}}" class="math inline" />
+устойчиво и соответствует стабильному функционированию предприятия.
+Второе состояние \widetilde{M_{-} неустойчиво, так, что при <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M%20%3C%20%5Cwidetilde%7BM_%7B-%7D%7D"
+alt="M &lt; \widetilde{M_{-}}" title="M &lt; \widetilde{M_{-}}"
+class="math inline" /> оборотные средства падают (<img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20dM%2Fdt%20%3C%200"
+alt="dM/dt &lt; 0" title="dM/dt &lt; 0" class="math inline" />), то
+есть, фирма идет к банкротству. По смыслу <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cwidetilde%7BM_%7B-%7D%7D"
+alt="\widetilde{M_{-}}" title="\widetilde{M_{-}}" class="math inline" />
+соответствует начальному капиталу, необходимому для входа в рынок.</p>
+<h1
+id="теоретические-сведения.-построение-математической-модели.-7">Теоретические
+сведения. Построение математической модели.</h1>
+<p>В обсуждаемой модели параметр <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cdelta"
+alt="\delta" title="\delta" class="math inline" /> всюду входит в
+сочетании с <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctau"
+alt="\tau" title="\tau" class="math inline" />. Это значит, что
+уменьшение доли оборотных средств, вкладываемых в производство,
+эквивалентно удлинению производственного цикла. Поэтому мы в дальнейшем
+положим: <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Cdelta%20%3D%201"
+alt="\delta = 1" title="\delta = 1" class="math inline" />, а параметр
+<img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20%5Ctau"
+alt="\tau" title="\tau" class="math inline" /> будем считать временем
+цикла, с учётом сказанного.</p>
+<h1 id="задание-лабораторной-работы-8">Задание лабораторной работы
+№8</h1>
+<p><strong>Вариант 27</strong></p>
+<blockquote>
+<p>Случай 1</p>
+</blockquote>
+<p>Рассмотрим две фирмы, производящие взаимозаменяемые товары
+одинакового качества и находящиеся в одной рыночной нише. Считаем, что в
+рамках нашей модели конкурентная борьба ведётся только рыночными
+методами. То есть, конкуренты могут влиять на противника путем изменения
+параметров своего производства: себестоимость, время цикла, но не могут
+прямо вмешиваться в ситуацию на рынке («назначать» цену или влиять на
+потребителей каким-либо иным способом.) Будем считать, что постоянные
+издержки пренебрежимо малы, и в модели учитывать не будем. В этом случае
+динамика изменения объемов продаж фирмы 1 и фирмы 2 описывается
+следующей системой уравнений:</p>
+<h1 id="задание-лабораторной-работы-8-1">Задание лабораторной работы
+№8</h1>
+<p><strong>Вариант 27</strong></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cfrac%7BdM_1%7D%7Bd%5CTheta%7D%20%3D%20M_1%20-%20%5Cfrac%7Bb%7D%7Bc_1%7DM_1%20M_2%20-%20%5Cfrac%7Ba1%7D%7Bc1%7D%20M_1%5E2"
+alt="\frac{dM_1}{d\Theta} = M_1 - \frac{b}{c_1}M_1 M_2 - \frac{a1}{c1} M_1^2"
+title="\frac{dM_1}{d\Theta} = M_1 - \frac{b}{c_1}M_1 M_2 - \frac{a1}{c1} M_1^2"
+class="math display" /></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cfrac%7BdM_2%7D%7Bd%5CTheta%7D%20%3D%20%5Cfrac%7Bc_2%7D%7Bc_1%7D%20M_2%20-%20%5Cfrac%7Bb%7D%7Bc_1%7D%20M_1%20M_2%20-%20%5Cfrac%7Ba_2%7D%7Bc_1%7D%20M_2%5E2"
+alt="\frac{dM_2}{d\Theta} = \frac{c_2}{c_1} M_2 - \frac{b}{c_1} M_1 M_2 - \frac{a_2}{c_1} M_2^2"
+title="\frac{dM_2}{d\Theta} = \frac{c_2}{c_1} M_2 - \frac{b}{c_1} M_1 M_2 - \frac{a_2}{c_1} M_2^2"
+class="math display" /></p>
+<h1 id="задание-лабораторной-работы-8-2">Задание лабораторной работы
+№8</h1>
+<p><strong>Вариант 27</strong> где</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a_1%20%3D%20%5Cfrac%7Bp_%7Bcr%7D%7D%7B%5Ctau_1%5E2%20%5Cwidetilde%7Bp%7D_1%5E2%20Nq%20%7D"
+alt="a_1 = \frac{p_{cr}}{\tau_1^2 \widetilde{p}_1^2 Nq }"
+title="a_1 = \frac{p_{cr}}{\tau_1^2 \widetilde{p}_1^2 Nq }"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a_2%20%3D%20%5Cfrac%7Bp_%7Bcr%7D%7D%7B%5Ctau_2%5E2%20%5Cwidetilde%7Bp%7D_2%5E2%20Nq%20%7D"
+alt="a_2 = \frac{p_{cr}}{\tau_2^2 \widetilde{p}_2^2 Nq }"
+title="a_2 = \frac{p_{cr}}{\tau_2^2 \widetilde{p}_2^2 Nq }"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20b%20%3D%20%5Cfrac%7Bp_%7Bcr%7D%7D%7B%5Ctau_1%5E2%20%5Cwidetilde%7Bp%7D_1%5E2%20%5Ctau_2%5E2%20%5Cwidetilde%7Bp%7D_2%5E2%20Nq%7D"
+alt="b = \frac{p_{cr}}{\tau_1^2 \widetilde{p}_1^2 \tau_2^2 \widetilde{p}_2^2 Nq}"
+title="b = \frac{p_{cr}}{\tau_1^2 \widetilde{p}_1^2 \tau_2^2 \widetilde{p}_2^2 Nq}"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20c_1%20%3D%20%5Cfrac%7Bp_%7Bcr%7D%20-%20%5Cwidetilde%7Bp%7D_1%7D%7B%5Ctau_1%20%5Cwidetilde%7Bp%7D_1%7D"
+alt="c_1 = \frac{p_{cr} - \widetilde{p}_1}{\tau_1 \widetilde{p}_1}"
+title="c_1 = \frac{p_{cr} - \widetilde{p}_1}{\tau_1 \widetilde{p}_1}"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20c_2%20%3D%20%5Cfrac%7Bp_%7Bcr%7D%20-%20%5Cwidetilde%7Bp%7D_2%7D%7B%5Ctau_2%20%5Cwidetilde%7Bp%7D_2%7D"
+alt="c_2 = \frac{p_{cr} - \widetilde{p}_2}{\tau_2 \widetilde{p}_2}"
+title="c_2 = \frac{p_{cr} - \widetilde{p}_2}{\tau_2 \widetilde{p}_2}"
+class="math display" /></p>
+<p>также введена нормировка <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20t%20%3D%20c_1%20%5CTheta"
+alt="t = c_1 \Theta" title="t = c_1 \Theta" class="math inline" /></p>
+<h1 id="задание-лабораторной-работы-8-3">Задание лабораторной работы
+№8</h1>
+<p><strong>Вариант 27</strong></p>
+<blockquote>
+<p>Случай 2</p>
+</blockquote>
+<p>Рассмотрим модель, когда, помимо экономического фактора влияния
+(изменение себестоимости, производственного цикла, использование кредита
+и т.п.), используются еще и социально-психологические факторы –
+формирование общественного предпочтения одного товара другому, не
+зависимо от их качества и цены. В этом случае взаимодействие двух фирм
+будет зависеть друг от друга, соответственно коэффициент перед <img
+style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Ctextstyle%20M_1%20M_2"
+alt="M_1 M_2" title="M_1 M_2" class="math inline" /> будет отличаться.
+Пусть в рамках рассматриваемой модели динамика изменения объемов продаж
+фирмы 1 и фирмы 2 описывается следующей системой уравнений:</p>
+<h1 id="задание-лабораторной-работы-8-4">Задание лабораторной работы
+№8</h1>
+<p><strong>Вариант 27</strong></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cfrac%7BdM_1%7D%7Bd%5CTheta%7D%20%3D%20M_1%20-%20%28%5Cfrac%7Bb%7D%7Bc_1%7D%20%2B%200.00017%29M_1%20M_2%20-%20%5Cfrac%7Ba1%7D%7Bc1%7D%20M_1%5E2"
+alt="\frac{dM_1}{d\Theta} = M_1 - (\frac{b}{c_1} + 0.00017)M_1 M_2 - \frac{a1}{c1} M_1^2"
+title="\frac{dM_1}{d\Theta} = M_1 - (\frac{b}{c_1} + 0.00017)M_1 M_2 - \frac{a1}{c1} M_1^2"
+class="math display" /></p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cfrac%7BdM_2%7D%7Bd%5CTheta%7D%20%3D%20%5Cfrac%7Bc_2%7D%7Bc_1%7D%20M_2%20-%20%5Cfrac%7Bb%7D%7Bc_1%7D%20M_1%20M_2%20-%20%5Cfrac%7Ba_2%7D%7Bc_1%7D%20M_2%5E2"
+alt="\frac{dM_2}{d\Theta} = \frac{c_2}{c_1} M_2 - \frac{b}{c_1} M_1 M_2 - \frac{a_2}{c_1} M_2^2"
+title="\frac{dM_2}{d\Theta} = \frac{c_2}{c_1} M_2 - \frac{b}{c_1} M_1 M_2 - \frac{a_2}{c_1} M_2^2"
+class="math display" /></p>
+<h1 id="задание-лабораторной-работы-8-5">Задание лабораторной работы
+№8</h1>
+<p><strong>Вариант 27</strong></p>
+<p>Для обоих случаев рассмотрим задачу со следующими начальными
+условиями и параметрами</p>
+<p><img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20M_0%5E1%3D7.7%20%5C%3A%20M_0%5E2%3D8.8"
+alt="M_0^1=7.7 \: M_0^2=8.8" title="M_0^1=7.7 \: M_0^2=8.8"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20p_%7Bcr%7D%3D39%20%5C%3A%20N%3D91%20%5C%3A%20q%3D1"
+alt="p_{cr}=39 \: N=91 \: q=1" title="p_{cr}=39 \: N=91 \: q=1"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Ctau_1%3D31%20%5C%3A%20%5Ctau_2%3D28"
+alt="\tau_1=31 \: \tau_2=28" title="\tau_1=31 \: \tau_2=28"
+class="math display" /> <img style="vertical-align:middle"
+src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20%5Cwidetilde%7Bp%7D_1%3D11.2%20%5C%3A%20%5Cwidetilde%7Bp%7D_2%3D15.5"
+alt="\widetilde{p}_1=11.2 \: \widetilde{p}_2=15.5"
+title="\widetilde{p}_1=11.2 \: \widetilde{p}_2=15.5"
+class="math display" /></p>
+<h1 id="задачи-лабораторной-работы-8">Задачи лабораторной работы №8</h1>
+<ol type="1">
+<li><p>Изучить модель конкуренции двух фирм</p></li>
+<li><p>Построить графики изменения оборотных средств двух фирм для обоих
+случаев</p></li>
+</ol>
+<h1 id="код-программы-julia-для-первого-случая">Код программы Julia для
+первого случая</h1>
+<pre><code>using Plots
+using DifferentialEquations
+
+cr = 39
+t1 = 31
+p1 =  11.2
+t2 = 28
+p2 = 15.5
+N = 91
+q = 1
+
+a1 = cr / (t1 * t1 * p1 * p1 * N * q)
+a2 = cr / (t2 * t2 * p2 * p2 * N *q)
+b = cr / (t1 * t1 * t2 * t2 * p1 * p1 * p2 * p2 * N * q)
+c1 = (cr - p1) / (t1 * p1)
+c2 = (cr - p2) / (t2 * p2)
+
+function ode_fn(du, u, p, t)
+    M1, M2 = u
+    du[1] = u[1] - b / c1*u[1] * u[2] - a1 / c1*u[1] * u[1]
+    du[2] = c2 / c1*u[2] - b / c1*u[1] * u[2] - a2 / c1*u[2] * u[2]
+end
+</code></pre>
+<h1 id="код-программы-julia-для-первого-случая-1">Код программы Julia
+для первого случая</h1>
+<pre><code>v0 = [7.7, 8.8]
+tspan = (0.0, 30.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax = 0.05)
+M1 = [u[1] for u in sol.u]
+M2 = [u[2] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi = 600, legend = true)
+
+plot!(plt, T, M1, label = &quot;Оборотные средства фирмы #1&quot;, color = :green)
+
+plot!(plt, T, M2, label = &quot;Оборотные средства фирмы #2&quot;, color = :red)
+
+savefig(plt, &quot;lab08_1.png&quot;)</code></pre>
+<h1 id="код-программы-julia-для-второго-случая">Код программы Julia для
+второго случая</h1>
+<pre><code>using Plots
+using DifferentialEquations
+
+cr = 39
+t1 = 31
+p1 =  11.2
+t2 = 28
+p2 = 15.5
+N = 91
+q = 1
+
+a1 = cr / (t1 * t1 * p1 * p1 * N * q)
+a2 = cr / (t2 * t2 * p2 * p2 * N *q)
+b = cr / (t1 * t1 * t2 * t2 * p1 * p1 * p2 * p2 * N * q)
+c1 = (cr - p1) / (t1 * p1)
+c2 = (cr - p2) / (t2 * p2)
+</code></pre>
+<h1 id="код-программы-julia-для-второго-случая-1">Код программы Julia
+для второго случая</h1>
+<pre><code>function ode_fn(du, u, p, t)
+    M1, M2 = u
+    du[1] = u[1] - (b / c1 + 0.00017)*u[1] * u[2] - a1 / c1*u[1] * u[1]
+    du[2] = c2 / c1*u[2] - b / c1*u[1] * u[2] - a2 / c1*u[2] * u[2]
+end
+
+v0 = [7.7, 8.8]
+tspan = (0.0, 30.0)
+prob = ODEProblem(ode_fn, v0, tspan)
+sol = solve(prob, dtmax = 0.05)
+M1 = [u[1] for u in sol.u]
+M2 = [u[2] for u in sol.u]
+T = [t for t in sol.t]
+
+plt = plot(dpi = 600,legend = :topright)
+
+plot!(plt, T, M1, label = &quot;Оборотные средства фирмы #1&quot;, color = :green)
+
+plot!(plt, T, M2, label = &quot;Оборотные средства фирмы #2&quot;, color = :red)
+
+savefig(plt, &quot;lab08_2.png&quot;)</code></pre>
+<h1 id="результаты-работы-кода-на-julia-для-первого-случая">Результаты
+работы кода на Julia для первого случая</h1>
+<figure id="fig:001">
+<img src="image/1.PNG" style="width:70.0%;height:70.0%"
+alt="График конкуренции двух фирм фирм для первого случая, построенный на языке Julia" />
+<figcaption aria-hidden="true">График конкуренции двух фирм фирм для
+первого случая, построенный на языке Julia</figcaption>
+</figure>
+<h1 id="анализ-полученных-результатов.">Анализ полученных
+результатов.</h1>
+<p>По графику видно, что рост оборотных средств предприятий идет
+независимо друг от друга. Каждая фирма достигает свое максимальное
+значение объема продаж и остается на рынке с этим значением, то есть
+каждая фирма захватывает свою часть рынка потребителей, которая не
+изменяется.</p>
+<h1 id="результаты-работы-кода-на-julia-для-второго-случая">Результаты
+работы кода на Julia для второго случая</h1>
+<figure id="fig:002">
+<img src="image/2.PNG" style="width:70.0%;height:70.0%"
+alt="График конкуренции двух фирм для второго случая, построенный на языке Julia" />
+<figcaption aria-hidden="true">График конкуренции двух фирм для второго
+случая, построенный на языке Julia</figcaption>
+</figure>
+<h1 id="анализ-полученных-результатов.-1">Анализ полученных
+результатов.</h1>
+<p>По графику видно, что первая фирма, несмотря на начальный рост,
+достигнув своего максимального объема продаж, начитает нести убытки и, в
+итоге, терпит банкротство. Динамика роста объемов оборотных средств
+второй фирмы остается без изменения: достигнув максимального значения,
+остается на этом уровне.</p>
+<h1 id="код-для-первого-случая-в-openmodelica">Код для первого случая в
+OpenModelica</h1>
+<pre><code>model lab08_1
+Real cr = 39;
+Real t1 = 31;
+Real p1 = 11.2;
+Real t2 = 28;
+Real p2 = 15.5;
+Real N = 91;
+Real q = 1;
+
+Real a1 = cr / (t1 * t1 * p1 * p1 * N * q);
+Real a2 = cr / (t2 * t2 * p2 * p2 * N * q);
+Real b = cr / (t1 * t1 * t2 * t2 * p1 * p1 * p2 * p2 * N * q);
+Real c1 = (cr - p1) / (t1 * p1);
+Real c2 = (cr - p2) / (t2 * p2);</code></pre>
+<h1 id="код-для-первого-случая-в-openmodelica-1">Код для первого случая
+в OpenModelica</h1>
+<pre><code>Real M1;
+Real M2;
+initial equation
+M1 = 7.7;
+M2 = 8.8;
+equation
+der(M1) = M1 - b / c1 * M1 * M2 - a1 / c1 * M1 * M1;
+der(M2) = c2 / c1 * M2 - b / c1 * M1 * M2 - a2 / c1 * M2 * M2;
+end lab08_1;</code></pre>
+<h1 id="код-для-второго-случая-в-openmodelica">Код для второго случая в
+OpenModelica</h1>
+<pre><code>model lab08_2
+Real cr = 39;
+Real t1 = 31;
+Real p1 = 11.2;
+Real t2 = 28;
+Real p2 = 15.5;
+Real N = 91;
+Real q = 1;
+
+Real a1 = cr / (t1 * t1 * p1 * p1 * N * q);
+Real a2 = cr / (t2 * t2 * p2 * p2 * N * q);
+Real b = cr / (t1 * t1 * t2 * t2 * p1 * p1 * p2 * p2 * N * q);
+Real c1 = (cr - p1) / (t1 * p1);
+Real c2 = (cr - p2) / (t2 * p2);</code></pre>
+<h1 id="код-для-второго-случая-в-openmodelica-1">Код для второго случая
+в OpenModelica</h1>
+<pre><code>Real M1;
+Real M2;
+initial equation
+M1 = 7.7;
+M2 = 8.8;
+equation
+der(M1) = M1 - (b / c1 + 0.00017) * M1 * M2 - a1 / c1 * M1 * M1;
+der(M2) = c2 / c1 * M2 - b / c1 * M1 * M2 - a2 / c1 * M2 * M2;
+end lab08_2;</code></pre>
+<h1
+id="результаты-работы-кода-на-openmodelica-для-первого-случая">Результаты
+работы кода на OpenModelica для первого случая</h1>
+<figure id="fig:004">
+<img src="image/3.PNG" style="width:70.0%;height:70.0%"
+alt="График конкуренции двух фирм для первого случая, построенный с помощью OpenModelica" />
+<figcaption aria-hidden="true">График конкуренции двух фирм для первого
+случая, построенный с помощью OpenModelica</figcaption>
+</figure>
+<h1
+id="результаты-работы-кода-на-openmodelica-для-второго-случая">Результаты
+работы кода на OpenModelica для второго случая</h1>
+<figure id="fig:005">
+<img src="image/4.PNG" style="width:70.0%;height:70.0%"
+alt="График конкуренции двух фирм для второго случая, построенный с помощью OpenModelica" />
+<figcaption aria-hidden="true">График конкуренции двух фирм для второго
+случая, построенный с помощью OpenModelica</figcaption>
+</figure>
+<h1 id="анализ-полученных-результатов.-сравнение-языков.">Анализ
+полученных результатов. Сравнение языков.</h1>
+<p>В итоге проделанной работы на языках Julia и OpenModelica мы
+построили графики изменения оборотных средств для двух фирм для случаев,
+когда конкурентная борьба ведётся только рыночными методами и когда,
+помимо экономического фактора влияния, используются еще и
+социально-психологические факторы.</p>
+<p>Построение модели конкуренции двух фирм на языке OpenModelica
+занимает значительно меньше строк кода и времени построения графиков,
+чем аналогичное построение на Julia.</p>
+<h1 id="вывод-лабораторной-работы-8">Вывод лабораторной работы №8</h1>
+<p>В ходе выполнения лабораторной работы №8 была изучена модель
+конкуренции двух фирм и в дальнейшем построена модель на языках Julia и
+OpenModelica.</p>
+</body>
+</html>
